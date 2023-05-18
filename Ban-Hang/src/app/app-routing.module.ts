@@ -11,10 +11,12 @@ const routes: Routes = [
     path: '', component: BaseLayoutUserComponent, children: [
       { path: '', component: HomePageComponent },
       { path: 'page-detail', component: PageDetailComponent },
-      { path: 'signin', component: SigninComponent },
-      { path: 'signup', component: SignupComponent }
+
     ]
-  }
+
+  },
+  { path: 'signin', component: SigninComponent },
+  { path: 'signup', component: SignupComponent }
 ];
 
 @NgModule({
