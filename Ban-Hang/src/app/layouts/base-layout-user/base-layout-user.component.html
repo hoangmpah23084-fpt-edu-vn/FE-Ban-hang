@@ -16,11 +16,14 @@
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
         </form>
+        <h1 *ngIf="userName; else links">Xin chào, {{ userName }}!</h1>
 
-        <div class="text-end">
-          <a routerLink="/signin"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-          <a routerLink="/signup"><button type="button" class="btn btn-warning text-white">Sign-up</button></a>
-        </div>
+        <ng-template #links>
+          <div class="text-end">
+            <a routerLink="/signin"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+            <a routerLink="/signup"><button type="button" class="btn btn-warning text-white">Sign-up</button></a>
+          </div>
+        </ng-template>
       </div>
     </div>
   </header>
