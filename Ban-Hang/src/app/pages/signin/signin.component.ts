@@ -24,11 +24,16 @@ export class SigninComponent {
         password: this.loginForm.value.password || ''
       };
       this.authService.signin(signinData).subscribe(
-        (data) => {
-          console.log(data.name);
-
+        (data:any) => {
           alert('Đăng nhập thành công');
-          this.router.navigate(['/']);
+          console.log(data.user);
+          if(data.user.role==="admin"){
+            this.router.navigate(['signup']);
+            console.log(123);
+          }else{
+            this.router.navigate(['/'])
+          }
+          
         },
         (error) => {
           alert('Đăng nhập thất bại');
