@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./base-layout-user.component.scss']
 })
 export class BaseLayoutUserComponent {
+  userName = localStorage.getItem('userName');
 
 }
