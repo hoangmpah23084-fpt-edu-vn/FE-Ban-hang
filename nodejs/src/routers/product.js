@@ -5,7 +5,7 @@ import { checkPermission } from "../middlewares/checkPermission";
 const router = express.Router();
 
 router.post("/products", create);
-router.put("/products/:id", update);
+router.patch("/products/:id", update);
 router.get("/products/:id", getOne);
 
 
