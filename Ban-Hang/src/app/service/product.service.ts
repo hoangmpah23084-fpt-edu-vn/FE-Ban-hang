@@ -31,8 +31,13 @@ export class ProductService {
 
   }
 
+  deleteProduct(id:number):Observable<IProduct>{
+    const url = `${this.API}/products/${id}`;
+    return this.http.delete<IProduct>(url,this.httpOptions)
+  }
+
   getCategory(): Observable<ICategory> {
-    const url = `${this.API}/products`;
+    const url = `${this.API}/categorys`;
     return this.http.get<ICategory>(url,this.httpOptions)
   }
 
