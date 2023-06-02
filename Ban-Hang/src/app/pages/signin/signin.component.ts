@@ -4,6 +4,7 @@ import { AuthService } from '../../service/auth.service';
 import { User } from 'src/app/interface/auth';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -30,12 +31,8 @@ export class SigninComponent {
           console.log(data.user);
           localStorage.setItem('userName', data.user.name);
           localStorage.setItem('token', data.token);
-
-
-
           let token = localStorage.getItem('token');
           console.log(token);
-
           if (data.user.role === "admin") {
             this.router.navigate(['/admin']);
             alert('Chào mừng quản trị viên')
