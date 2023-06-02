@@ -13,6 +13,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CategoryAddComponent } from './pages/category-add/category-add.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomePageComponent,
     PageDetailComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    CategoryAddComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
