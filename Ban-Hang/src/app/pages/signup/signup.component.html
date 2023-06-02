@@ -14,70 +14,80 @@
 
                                 <form class="mx-1 mx-md-4" [formGroup]="formSignup" (ngSubmit)="onHandleSubmit()">
 
-                                    <div class="d-flex flex-row align-items-center mb-1">
+                                    <div class="d-flex flex-row align-items-center mb-2">
                                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="text" id="name" class="form-control" formControlName="name" />
-                                            <label class="form-label" for="form3Example1c">Your Name</label>
+                                            <input type="text" id="name" class="form-control" formControlName="name"
+                                                placeholder="Name" />
                                         </div>
-                                        <div *ngIf="formSignup.get('name')?.hasError('required') && submitted" class="text-red-500">
-                                            Name is required
+                                        <div *ngIf="checkValidate['name'].invalid &&checkValidate['name'].dirty ">
+                                            <div *ngIf="checkValidate['name'].getError('required')">
+                                                <span class="errormessage">Name không được để trống</span>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="d-flex flex-row align-items-center mb-2">
                                         <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="email" id="email" class="form-control" formControlName="email"/>
-                                            <label class="form-label" for="form3Example3c">Your Email</label>
+
+                                            <input type="email" id="email" class="form-control" formControlName="email"
+                                                placeholder="Email" />
                                         </div>
-                                        <div *ngIf="formSignup.get('email')?.hasError('required') && submitted" class="text-red-500">
-                                            Email is required
-                                        </div>
-                                        <div *ngIf="formSignup.get('email')?.hasError('email') && submitted" class="text-red-500">
-                                            Email không đúng định dạng
+                                        <br>
+                                        <div *ngIf="checkValidate['email'].invalid &&checkValidate['email'].dirty ">
+                                            <div *ngIf="checkValidate['email'].getError('required')">
+                                                <span class="errormessage">Email không được để trống</span>
+                                            </div>
+                                            <div *ngIf="checkValidate['email'].getError('email')">
+                                                <span class="errormessage">Email không đúng dạng</span>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-1">
                                         <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="password" class="form-control" formControlName="password" />
-                                            <label class="form-label" for="form3Example4c">Password</label>
+                                            <input type="password" id="password" class="form-control"
+                                                formControlName="password" placeholder="Password" />
                                         </div>
-                                        <div *ngIf="formSignup.get('password')?.hasError('password') && submitted" class="text-red-500">
-                                            Mật khẩu là bắt buộc
-                                        </div>
-                                        <div *ngIf="formSignup.get('password')?.hasError('minlenght') && submitted" class="text-red-500">
-                                            Mật khẩu phải trên 8 kí tự
+                                        <br>
+                                        <div
+                                            *ngIf="checkValidate['password'].invalid &&checkValidate['password'].dirty ">
+                                            <div *ngIf="checkValidate['password'].getError('required')">
+                                                <span class="errormessage">Password không được để trống</span>
+                                            </div>
+                                            <div *ngIf="checkValidate['password'].getError('minlength')">
+                                                <span class="errormessage">Password trên 8 ký tự</span>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-1">
                                         <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                         <div class="form-outline flex-fill mb-0">
-                                            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" />
-                                            <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                                            <input type="password" id="confirmPassword" class="form-control"
+                                                formControlName="confirmPassword" placeholder="confirmPassword" />
+                                        </div><br>
+                                        <div
+                                            *ngIf="checkValidate['confirmPassword'].invalid &&checkValidate['confirmPassword'].dirty ">
+                                            <div *ngIf="checkValidate['confirmPassword'].getError('required')">
+                                                <span class="errormessage">confirmPassword không được để trống</span>
+                                            </div>
+                                            <div *ngIf="checkValidate['confirmPassword'].getError('MustchPassword')">
+                                                <span class="errormessage">Password không khớp</span>
+                                            </div>
+                                            <div *ngIf="checkValidate['confirmPassword'].getError('minlength')">
+                                                <span class="errormessage">confirmPassword trên 8 ký tự</span>
+                                            </div>
                                         </div>
-                                        <div *ngIf="formSignup.get('noMatch') && submitted" class="text-red-500">
-                                            Mật khẩu không khớp!
-                                          </div>
                                     </div>
-
-                                    <div class="form-check d-flex justify-content-center mb-1">
-                                        <input class="form-check-input me-2" type="checkbox" value=""
-                                            id="form2Example3c" />
-                                        <label class="form-check-label" for="form2Example3">
-                                            I agree all statements in <a href="#!">Terms of service</a>
-                                        </label>
-                                    </div>
-
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 ">
                                         <div style="margin-top: 8px ;margin-right: 10px;">
                                             Do you already have an account <a routerLink="/signin"
                                                 style="color: rgb(107, 86, 242); text-decoration: underline; margin-left: 7px;">Signin</a>
                                         </div>
-                                        <button class="btn btn-danger">Register</button>
+                                        <button class="btn btn-danger" [disabled]="formSignup.invalid">Register</button>
 
 
                                     </div>
