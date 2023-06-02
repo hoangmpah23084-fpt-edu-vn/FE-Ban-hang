@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from "@angular/forms"
+import { FormBuilder, Validators, FormGroup, FormControl } from "@angular/forms"
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interface/auth';
@@ -13,23 +13,35 @@ export class SignupComponent {
   user!: User
   submitted: boolean = false
   formSignup = this.formBuilder.group({
-    name: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    confirmPassword: ['', [Validators.required]]
-  }, { Validators: this.checkPassword })
+    name: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)])),
+    confirmPassword: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8)]))
+  }, { validator: this.MustchPassword('password', 'confirmPassword') })
+
+  MustchPassword(password: string, confirmPassword: string) {
+    return (formGroup: FormGroup) => {
+      const passwordControl = formGroup.controls[password];
+      const confirmPasswordControl = formGroup.controls[confirmPassword];
+      if (confirmPasswordControl.errors && !confirmPasswordControl.errors['MustchPassword']) {
+        return
+      }
+
+      if (passwordControl.value !== confirmPasswordControl.value) {
+        confirmPasswordControl.setErrors({ MustchPassword: true })
+      } else {
+        confirmPasswordControl.setErrors(null)
+      }
+    };
+  }
+  get checkValidate() {
+    return this.formSignup.controls
+  }
 
   constructor(private formBuilder: FormBuilder,
     private auth: AuthService,
     private router: Router) { }
 
-  checkPassword(form: FormGroup) {
-    const password = form.get('password')?.value;
-    const confirmPassword = form.get('confirmPassword')?.value;
-    if (password === confirmPassword)
-      return null;
-    return { notMath: true };
-  }
 
   onHandleSubmit() {
     this.submitted = true;
