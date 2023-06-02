@@ -5,18 +5,23 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PageDetailComponent } from './pages/page-detail/page-detail.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { CategoryAddComponent } from './pages/category-add/category-add.component';
 
 const routes: Routes = [
   {
     path: '', component: BaseLayoutUserComponent, children: [
       { path: '', component: HomePageComponent },
       { path: 'page-detail', component: PageDetailComponent },
-
     ]
-
   },
   { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: 'category/add', component: CategoryAddComponent }
+    ]
+  }
 ];
 
 @NgModule({
