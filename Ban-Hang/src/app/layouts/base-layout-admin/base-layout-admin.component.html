@@ -1,1 +1,181 @@
-<p>base-layout-admin works!</p>
+<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center justify-start">
+                <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar"
+                    type="button"
+                    class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                    <span class="sr-only">Open sidebar</span>
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" fill-rule="evenodd"
+                            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+                        </path>
+                    </svg>
+                </button>
+                <a routerLink="/admin" class="flex ml-2 md:mr-24">
+                    <img src="data:image/jpeg;base64,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"
+                        class="h-8 mr-3" alt="not file" />
+                    <span
+                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">WE17305
+                    </span>
+                </a>
+            </div>
+            <div class="flex items-center">
+                <div class="flex items-center ml-3">
+                    <div>
+                        <button type="button"
+                            class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                            aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                            <span class="sr-only">Open user menu</span>
+                            <img class="w-8 h-8 rounded-full"
+                                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                        </button>
+                    </div>
+                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                        id="dropdown-user">
+                        <div class="px-4 py-3" role="none">
+                            <p class="text-sm text-gray-900 dark:text-white" role="none">
+                                Neil Sims
+                            </p>
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                                neil.sims@flowbite.com
+                            </p>
+                        </div>
+                        <ul class="py-1" role="none">
+                            <li>
+                                <a routerLink=""
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    role="menuitem">Home Page</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    role="menuitem">Settings</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    role="menuitem">Earnings</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    role="menuitem">Sign out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<aside id="logo-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+    aria-label="Sidebar">
+    <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+        <ul class="space-y-2 font-medium">
+            <li>
+                <a routerLink="/admin"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg aria-hidden="true"
+                        class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                        <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                    </svg>
+                    <span class="ml-3">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="category"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg aria-hidden="true"
+                        class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                        </path>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Category</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg aria-hidden="true"
+                        class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z">
+                        </path>
+                        <path
+                            d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z">
+                        </path>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>
+                    <span
+                        class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg aria-hidden="true"
+                        class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg aria-hidden="true"
+                        class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg aria-hidden="true"
+                        class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Sign In</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <svg aria-hidden="true"
+                        class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+<div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+        <router-outlet></router-outlet>
+    </div>
+</div>

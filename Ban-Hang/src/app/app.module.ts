@@ -14,7 +14,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
-import { AdminComponent } from './pages/admin/admin.component';
+import { DashBoardComponent } from './pages/dash-board/dash-board.component';
+import { ListCategoriesComponent } from './pages/list-categories/list-categories.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AdminComponent } from './pages/admin/admin.component';
     SigninComponent,
     SignupComponent,
     CategoryAddComponent,
-    AdminComponent
+    DashBoardComponent,
+    ListCategoriesComponent
   ],
   imports: [
     BrowserModule,

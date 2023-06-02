@@ -5,8 +5,10 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PageDetailComponent } from './pages/page-detail/page-detail.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
+import { BaseLayoutAdminComponent } from './layouts/base-layout-admin/base-layout-admin.component';
+import { DashBoardComponent } from './pages/dash-board/dash-board.component';
+import { ListCategoriesComponent } from './pages/list-categories/list-categories.component';
 
 const routes: Routes = [
   {
@@ -18,7 +20,10 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   {
-    path: 'admin', component: AdminComponent, children: [
+    path: 'admin', component: BaseLayoutAdminComponent, children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashBoardComponent },
+      { path: 'category', component: ListCategoriesComponent },
       { path: 'category/add', component: CategoryAddComponent }
     ]
   }

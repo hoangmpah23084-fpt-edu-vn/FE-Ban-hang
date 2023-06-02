@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
-import { Signin, User } from 'src/app/interface/auth';
+import { User } from 'src/app/interface/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,9 @@ export class SigninComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router) { }
 
   onSubmit() {
     if (this.loginForm.valid) {
@@ -24,16 +26,24 @@ export class SigninComponent {
         password: this.loginForm.value.password || ''
       };
       this.authService.signin(signinData).subscribe(
-        (data:any) => {
-          alert('Đăng nhập thành công');
+        (data: any) => {
           console.log(data.user);
-          if(data.user.role==="admin"){
-            this.router.navigate(['signup']);
-            console.log(123);
-          }else{
+          localStorage.setItem('userName', data.user.name);
+          localStorage.setItem('token', data.token);
+
+
+
+          let token = localStorage.getItem('token');
+          console.log(token);
+
+          if (data.user.role === "admin") {
+            this.router.navigate(['/admin']);
+            alert('Chào mừng quản trị viên')
+          } else {
+            alert('Đăng nhập thành công');
             this.router.navigate(['/'])
           }
-          
+
         },
         (error) => {
           alert('Đăng nhập thất bại');
@@ -41,4 +51,5 @@ export class SigninComponent {
       );
     }
   }
+
 }
