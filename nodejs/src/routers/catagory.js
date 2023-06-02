@@ -1,11 +1,11 @@
 import express from "express";
-import { create, update } from "../controllers/category";
+import { create, getOne, update } from "../controllers/category";
 
 const router = express.Router();
 
 router.post("/categorys", create);
-router.put("/categorys/:id", update);
-
+router.patch("/categorys/:id", update);
+router.get("/categorys/:id", getOne);
 
 
 

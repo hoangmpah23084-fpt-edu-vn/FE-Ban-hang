@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AdminComponent } from './pages/admin/admin.component';
     SigninComponent,
     SignupComponent,
     CategoryAddComponent,
-    AdminComponent
+    AdminComponent,
+    CategoryEditComponent
   ],
   imports: [
     BrowserModule,
