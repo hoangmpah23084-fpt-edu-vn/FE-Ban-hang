@@ -9,13 +9,14 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PageDetailComponent } from './pages/page-detail/page-detail.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
-
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
+import { ProductAddComponent } from './pages/product-add/product-add.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,15 @@ import { CategoryEditComponent } from './pages/category-edit/category-edit.compo
     SignupComponent,
     CategoryAddComponent,
     AdminComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+    ProductAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent]

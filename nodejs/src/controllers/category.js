@@ -71,5 +71,23 @@ export const getOne = async (req, res) => {
     }
 }
 
-
+export const getAll = async (req, res) => {
+    try {
+        const data = await Category.find();
+        console.log(data);
+        if (data.length === 0) {
+            return res.status(200).json({
+                message: "Không có dữ liệu",
+            });
+        }
+        return res.status(200).json({
+            message: "Danh sách All",
+            data,
+        });
+    } catch (error) {
+        return res.status(404).json({
+            message: error,
+        });
+    }
+};
 

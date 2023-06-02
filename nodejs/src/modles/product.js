@@ -15,12 +15,10 @@ const productSchema = new Schema({
     describe: {
         type: String,
     },
-    mainImage: {
+    images: {
         type: String,
     },
-    subImages: {
-        type: String,
-    },
+
     categoryId: {
         type: mongoose.Types.ObjectId,
         ref: "Category",
