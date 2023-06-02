@@ -16,6 +16,7 @@ import { DashBoardComponent } from './pages/dash-board/dash-board.component';
 import { ListCategoriesComponent } from './pages/list-categories/list-categories.component';
 import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProductAddComponent } from './pages/product-add/product-add.component';
     DashBoardComponent,
     ListCategoriesComponent,
     CategoryEditComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
