@@ -34,14 +34,6 @@ export const create = async (req, res) => {
 export const update = async (req, res) => {
 
     try {
-        const { error } = categorySchema.validate(req.body, { abortEarly: false })
-        if (error) {
-            const errors = error.details.map((err) => err.message);
-            return res.status(404).json({
-                errors: errors
-            })
-        }
-
         const data = await Category.findOneAndUpdate({ _id: req.params.id }, req.body, {
             new: true,
         });
@@ -60,6 +52,24 @@ export const update = async (req, res) => {
         });
     }
 };
+
+export const getOne = async (req, res) => {
+    try {
+
+        const data = await Category.findById(req.params.id);
+        if (data.length === 0) {
+            return res.status(200).json({
+                message: "Không có dữ liệu",
+            });
+        }
+        return res.json(data);
+    } catch (error) {
+        return res.status(400).json({
+            message: error.message,
+        });
+
+    }
+}
 
 
 

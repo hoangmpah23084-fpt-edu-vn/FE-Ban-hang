@@ -7,6 +7,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
+import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   {
     path: 'admin', component: AdminComponent, children: [
-      { path: 'category/add', component: CategoryAddComponent }
+      { path: 'category/add', component: CategoryAddComponent },
+      { path: 'category/:id/edit', component: CategoryEditComponent },
+
     ]
   }
 ];
