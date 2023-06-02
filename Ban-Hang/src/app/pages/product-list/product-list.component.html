@@ -10,14 +10,14 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of products ">
-        <th scope="row">{{item.id}}</th>
+        <th scope="row">{{item._id}}</th>
         <td>{{item.name}}</td>
         <td>{{item.price}}</td>
         <td>
             <img width="100px" [src]="item.images" />
         </td>
         <td>
-            <button class="fw-bold ">xóa</button>
+            <button class="fw-bold text-primary" (click)="removeId(item._id!)">xóa</button>
         </td>
       </tr>
       
