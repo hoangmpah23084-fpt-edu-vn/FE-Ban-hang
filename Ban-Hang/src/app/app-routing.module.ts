@@ -8,6 +8,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
 import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
+import { ProductAddComponent } from './pages/product-add/product-add.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,8 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent, children: [
       { path: 'category/add', component: CategoryAddComponent },
       { path: 'category/:id/edit', component: CategoryEditComponent },
+      { path: 'product/add', component: ProductAddComponent },
+
 
     ]
   }
