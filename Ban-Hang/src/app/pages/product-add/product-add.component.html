@@ -45,7 +45,6 @@
         <label>categoryId</label>
         <select formControlName="categoryId" class="form-control">
             <option>Chọn danh mục</option>
-
             <option *ngFor="let item of categorys" [ngValue]="item._id">
                 {{item.name}}
             </option>
