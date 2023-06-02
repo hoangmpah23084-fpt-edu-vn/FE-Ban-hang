@@ -37,6 +37,28 @@ export const create = async (req, res) => {
     }
 }
 
+export const getAll = async (req, res) => {
+    try {
+
+        const data = await Product.find();
+        if (data.length === 0) {
+            return res.status(200).json({
+                message: "Không có dữ liệu",
+            });
+        }
+        return res.status(200).json({
+            message: "Danh sách sản phẩm",
+            data,
+        });
+
+    } catch (error) {
+        return res.status(400).json({
+            message: error.message,
+        });
+
+    }
+}
+
 
 export const getOne = async (req, res) => {
     try {
