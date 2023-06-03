@@ -104,9 +104,9 @@ export const update = async (req, res) => {
     }
 };
 
-export const remove = async(req,res) =>{
+export const remove = async (req, res) => {
     try {
-        const data = await Product.findByIdAndDelete({_id: req.params.id})
+        const data = await Product.findByIdAndDelete({ _id: req.params.id })
         return res.status(201).json({
             message: "Xóa sản phẩm thành công"
         })

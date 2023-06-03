@@ -17,6 +17,8 @@ import { ListCategoriesComponent } from './pages/list-categories/list-categories
 import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
+import { ProductDetailAdminComponent } from './pages/product-detail-admin/product-detail-admin.component';
+import { ProductUpdateComponent } from './pages/product-update/product-update.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
     ListCategoriesComponent,
     CategoryEditComponent,
     ProductAddComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductDetailAdminComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,

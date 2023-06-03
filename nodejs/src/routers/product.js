@@ -4,11 +4,11 @@ import { checkPermission } from "../middlewares/checkPermission";
 
 const router = express.Router();
 
-router.post("/products",checkPermission, create);
-router.get("/products",getAll)
-router.patch("/products/:id",checkPermission ,update);
-router.get("/products/:id", checkPermission,getOne);
-router.delete("/products/:id",checkPermission,remove)
+router.post("/products", checkPermission, create);
+router.get("/products", getAll)
+router.patch("/products/:id", checkPermission, update);
+router.get("/products/:id", getOne);
+router.delete("/products/:id", checkPermission, remove)
 
 
 

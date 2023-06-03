@@ -17,11 +17,10 @@ export class ProductListComponent {
     )
 
   }
-  
-  
-  removeId(_id:any){
-    console.log(_id);
-    this.productService.deleteProduct(_id).subscribe(()=>{ 
+
+
+  removeId(_id: any) {
+    this.productService.deleteProduct(_id).subscribe(() => {
       this.products = this.products.filter(product => product._id !== _id)
     })
   }

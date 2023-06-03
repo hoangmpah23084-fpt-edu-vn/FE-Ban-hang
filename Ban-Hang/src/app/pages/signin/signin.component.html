@@ -23,12 +23,20 @@
 
                                             <input type="email" id="form3Example3c" class="form-control"
                                                 formControlName="email" />
-                                            <div *ngIf="
+                                            <!-- <div *ngIf="
                                                 loginForm.get('email')?.hasError('email') &&
                                                     (loginForm.get('email')?.touched ||
                                                         loginForm.get('email')?.dirty)
                                                 " class="">
                                                 Mời nhập lại Email
+                                            </div> -->
+                                            <div *ngIf="checkValidate['email'].invalid &&checkValidate['email'].dirty ">
+                                                <div *ngIf="checkValidate['email'].getError('required')">
+                                                    <span class="errormessage">Email không được để trống</span>
+                                                </div>
+                                                <div *ngIf="checkValidate['email'].getError('email')">
+                                                    <span class="errormessage">Email không đúng dạng</span>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -42,6 +50,15 @@
 
                                             <input type="password" id="form3Example4c" class="form-control"
                                                 formControlName="password" />
+                                            <div
+                                                *ngIf="checkValidate['password'].invalid &&checkValidate['password'].dirty ">
+                                                <div *ngIf="checkValidate['password'].getError('required')">
+                                                    <span class="errormessage">Password không được để trống</span>
+                                                </div>
+                                                <div *ngIf="checkValidate['password'].getError('minlength')">
+                                                    <span class="errormessage">Password trên 8 ký tự</span>
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -58,7 +75,7 @@
                                             Do not have an account<a routerLink="/signup"
                                                 style="color: rgb(107, 86, 242); text-decoration: underline; margin-left: 7px;">Signup</a>
                                         </div>
-                                        <button class="btn btn-danger">Log in</button>
+                                        <button class="btn btn-danger" [disabled]="loginForm.invalid">Log in</button>
                                     </div>
                                 </form>
 
