@@ -1,8 +1,10 @@
 export interface User {
-    id?: number,
+    id?:  string,
     name?: string,
     email: string,
-    password: string,
+    password?: string,
+    role?:string,
+  
     
 }
 export interface Signin {
