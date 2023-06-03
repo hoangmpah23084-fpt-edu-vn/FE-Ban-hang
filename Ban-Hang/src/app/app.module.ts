@@ -40,7 +40,7 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
     ProductAddComponent,
 
     UserComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
 
     ProductListComponent
 
