@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ICategory } from '../interface/category';
 import { Observable } from 'rxjs';
 
@@ -7,20 +7,31 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryService {
-
+ 
+  private API = 'http://localhost:8080/api';
+   token = localStorage.getItem('token')
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.token , 
+    }),
+  }
   constructor(
     private http: HttpClient
   ) { }
 
   categoryAdd(category: ICategory): Observable<ICategory> {
-    return this.http.post<ICategory>(`http://localhost:8080/api/categorys`, category)
+    const url = `${this.API}/categorys`;
+    return this.http.post<ICategory>(url, category,this.httpOptions)
   }
 
   categoryUpdate(category: ICategory): Observable<ICategory> {
-    return this.http.patch<ICategory>(`http://localhost:8080/api/categorys/${category.id}`, category)
+    const url = `${this.API}/categorys/${category.id}`;
+    return this.http.patch<ICategory>(url, category,this.httpOptions)
   }
   getCategory(id: string | null): Observable<ICategory> {
-    return this.http.get<ICategory>(`http://localhost:8080/api/categorys/${id}`)
+    const url = `${this.API}/categorys/${id}`;
+    return this.http.get<ICategory>(url,this.httpOptions)
   }
 
 }

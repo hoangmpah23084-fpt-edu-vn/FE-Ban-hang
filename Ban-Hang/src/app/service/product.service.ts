@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IProduct } from '../interface/product';
 import { ICategory } from '../interface/category';
@@ -8,20 +8,37 @@ import { ICategory } from '../interface/category';
   providedIn: 'root'
 })
 export class ProductService {
+  private API = 'http://localhost:8080/api';
+   token = localStorage.getItem('token')
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.token , 
+    }),
+  }
 
   constructor(private http: HttpClient) { }
 
-
-
+  getProducts():Observable<IProduct[]>{
+    const url = `${this.API}/products`;
+    return this.http.get<IProduct[]>(url,this.httpOptions)
+  }
 
 
   addProduct(product: IProduct): Observable<IProduct> {
-    return this.http.post<IProduct>(`http://localhost:8080/api/products`, product)
+    const url = `${this.API}/products`;
+    return this.http.post<IProduct>(url, product,this.httpOptions)
 
   }
 
+  deleteProduct(id:number):Observable<IProduct>{
+    const url = `${this.API}/products/${id}`;
+    return this.http.delete<IProduct>(url,this.httpOptions)
+  }
+
   getCategory(): Observable<ICategory> {
-    return this.http.get<ICategory>(`http://localhost:8080/api/categorys`)
+    const url = `${this.API}/categorys`;
+    return this.http.get<ICategory>(url,this.httpOptions)
   }
 
   uploadImage(vals: any): Observable<any> {
