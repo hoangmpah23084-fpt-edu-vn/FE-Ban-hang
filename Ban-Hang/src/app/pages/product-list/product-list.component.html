@@ -13,14 +13,21 @@
           Product Name
         </th>
         <th scope="col" class="px-6 py-3">
+          categoryId
+        </th>
+        <th scope="col" class="px-6 py-3">
           Price
         </th>
         <th scope="col" class="px-6 py-3">
           Price Sale
         </th>
         <th scope="col" class="px-6 py-3">
+          Status
+        </th>
+        <th scope="col" class="px-6 py-3">
           Action
         </th>
+
       </tr>
     </thead>
     <tbody>
@@ -34,6 +41,10 @@
           <a routerLink="{{item._id}}">{{item.name}}</a>
 
         </td>
+        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+          <a routerLink="{{item._id}}">{{item.categoryId}}</a>
+        </td>
+
 
         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
           $ {{item.price}}
@@ -41,6 +52,13 @@
         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
           $ {{item.priceSale}}
         </td>
+        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" *ngIf="item.status===false">
+          Hết hàng
+        </td>
+        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" *ngIf="item.status===true">
+          Hoạt động
+        </td>
+
         <td class="px-6 py-4">
           <button (click)="removeId(item._id!)"
             class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</button>
