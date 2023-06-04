@@ -34,17 +34,19 @@ export class SigninComponent {
       };
       this.authService.signin(signinData).subscribe(
         (data: any) => {
-
-          console.log(data.user.role);
+          // console.log(data.user.email);
           localStorage.setItem('userName', data.user.name);
           localStorage.setItem('role', data.user.role);
+          localStorage.setItem('email', data.user.email);
+
 
           localStorage.setItem('token', data.token);
           let token = localStorage.getItem('token');
           console.log(token);
           if (data.user.role === "admin") {
-            this.router.navigate(['/']);
             alert('Chào mừng quản trị viên')
+            this.router.navigate(['/']);
+
           } else {
             alert('Đăng nhập thành công');
             this.router.navigate(['/'])
