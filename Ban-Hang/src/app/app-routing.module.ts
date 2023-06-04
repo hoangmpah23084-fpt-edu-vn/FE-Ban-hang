@@ -28,6 +28,7 @@ const routes: Routes = [
       { path: 'page-detail', component: PageDetailComponent },
       { path: 'product', component: ProductListComponent },
       { path: 'category', component: ListCategoriesComponent },
+      { path: 'product/:id', component: PageDetailComponent },
     ]
   },
   { path: 'signin', component: SigninComponent },

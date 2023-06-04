@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ICategory } from 'src/app/interface/category';
 import { IProduct } from 'src/app/interface/product';
 import { ProductService } from 'src/app/service/product.service';
@@ -15,17 +16,19 @@ export class ProductAddComponent {
 
   productAddForm = this.formBuilder.group({
     name: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required),
-    priceSale: new FormControl('', Validators.required),
+    price: new FormControl(0, Validators.required),
+    priceSale: new FormControl(0, Validators.required),
     describe: new FormControl('', Validators.compose([Validators.required, Validators.minLength(10)])),
     images: new FormControl('', Validators.required),
+    status: new FormControl(true, Validators.required),
     categoryId: new FormControl('', Validators.required),
+
   })
 
   get checkForm() { return this.productAddForm.controls }
   constructor(
     private formBuilder: FormBuilder,
-    private productService: ProductService) {
+    private productService: ProductService, private router: Router) {
     this.productService.getCategory().subscribe(response => {
       console.log(response.data);
       this.categorys = response.data
@@ -69,12 +72,14 @@ export class ProductAddComponent {
       priceSale: this.productAddForm.value.priceSale || 0,
       describe: this.productAddForm.value.describe || "",
       images: this.url[0] || "",
+      status: this.productAddForm.value.status || true,
       categoryId: this.productAddForm.value.categoryId || ""
 
     }
     this.productService.addProduct(product).subscribe(response => {
       console.log(response);
       alert("Thêm thành công")
+      this.router.navigate(['admin/product'])
     }, (error) => {
       alert("Thêm không thành công")
     }
