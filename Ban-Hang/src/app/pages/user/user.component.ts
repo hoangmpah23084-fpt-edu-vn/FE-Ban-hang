@@ -19,6 +19,7 @@ export class UserComponent {
       this.user = response.data
     })
   }
+
   Remove(_id: any) {
     console.log(_id);
 

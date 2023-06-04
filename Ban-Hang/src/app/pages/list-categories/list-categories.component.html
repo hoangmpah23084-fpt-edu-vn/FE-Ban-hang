@@ -17,14 +17,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr *ngFor="let cate of category"  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                 <td class="px-6 py-4">
-                    Laptop
+                    {{cate.name}}
+                    
                 </td>
-
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a [routerLink]="[cate._id,'edit']" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <button  class="btn btn-danger  m-3" (click)="Remove(cate._id!)">Remove</button>
+
                 </td>
             </tr>
 

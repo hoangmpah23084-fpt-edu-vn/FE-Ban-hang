@@ -54,6 +54,7 @@ import { ProductUpdateComponent } from './pages/product-update/product-update.co
 
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
