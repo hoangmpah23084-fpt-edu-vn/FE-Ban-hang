@@ -15,11 +15,13 @@ export class ProductAddComponent {
 
   productAddForm = this.formBuilder.group({
     name: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required),
-    priceSale: new FormControl('', Validators.required),
+    price: new FormControl(0, Validators.required),
+    priceSale: new FormControl(0, Validators.required),
     describe: new FormControl('', Validators.compose([Validators.required, Validators.minLength(10)])),
     images: new FormControl('', Validators.required),
+    status: new FormControl(true, Validators.required),
     categoryId: new FormControl('', Validators.required),
+
   })
 
   get checkForm() { return this.productAddForm.controls }
@@ -69,6 +71,7 @@ export class ProductAddComponent {
       priceSale: this.productAddForm.value.priceSale || 0,
       describe: this.productAddForm.value.describe || "",
       images: this.url[0] || "",
+      status: this.productAddForm.value.status || true,
       categoryId: this.productAddForm.value.categoryId || ""
 
     }

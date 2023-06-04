@@ -1,5 +1,4 @@
-<form style="margin-top: 50px;" (ngSubmit)="onHandleSubmit()" [formGroup]="productAddForm"
-    style="margin-left:500px; margin-top: 40px;">
+<form (ngSubmit)="onHandleSubmit()" [formGroup]="productAddForm">
 
     <div class="form-group">
         <label>Name</label>
@@ -44,13 +43,27 @@
     <div class="form-group">
         <label>categoryId</label>
         <select formControlName="categoryId" class="form-control">
-            <option>Chọn danh mục</option>
+            <option value="">Chọn danh mục</option>
             <option *ngFor="let item of categorys" [ngValue]="item._id">
                 {{item.name}}
             </option>
             <div *ngIf="checkForm['categoryId'].invalid &&checkForm['categoryId'].dirty ">
                 <div *ngIf="checkForm['categoryId'].getError('required')">
                     <span class="errormessage">categoryId không được để trống</span>
+                </div>
+            </div>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Status</label>
+        <select formControlName="status" class="form-control">
+            <option value="">Trạng thái</option>
+            <option value="true">Hoạt động</option>
+            <option value="false">Hết hàng</option>
+            <div *ngIf="checkForm['status'].invalid &&checkForm['status'].dirty ">
+                <div *ngIf="checkForm['status'].getError('required')">
+                    <span class="errormessage">status không được để trống</span>
                 </div>
             </div>
         </select>

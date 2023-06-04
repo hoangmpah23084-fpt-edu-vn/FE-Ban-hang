@@ -26,7 +26,7 @@ export class CategoryService {
   }
 
   categoryUpdate(category: ICategory): Observable<ICategory> {
-    const url = `${this.API}/categorys/${category.id}`;
+    const url = `${this.API}/categorys/${category._id}`;
     return this.http.patch<ICategory>(url, category, this.httpOptions)
   }
   getCategory(id: string | null): Observable<ICategory> {

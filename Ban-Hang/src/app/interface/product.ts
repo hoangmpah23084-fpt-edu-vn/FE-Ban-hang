@@ -1,10 +1,12 @@
 export interface IProduct {
-    _id?: string | number,
+    _id?: string,
     name: string,
-    price: string | number,
-    priceSale: string | number,
+    price: number,
+    priceSale: number,
     describe: string,
     images?: string,
-    categoryId?: string,
+    categoryId: string,
+    data?: string,
+    status: boolean
 
 }

@@ -12,20 +12,24 @@ import { RouterLink } from '@angular/router';
 export class UserComponent {
   user!: User[]
   constructor(
-    private  UserService : UserService
-  ){
+    private UserService: UserService
+  ) {
     this.UserService.getUsers().subscribe((response: any) => {
       console.log(response.data)
       this.user = response.data
     })
   }
-  Remove(_id:any){
-   const remonr = confirm('ban muốn xóa');
-   if(remonr){
-    this.UserService.deleteUser(_id).subscribe(()=>{
-      this.user = this.user.filter(item =>item.id !== _id)
-    })
-   }
+  Remove(_id: any) {
+    console.log(_id);
+
+    const remonr = confirm('ban muốn xóa');
+    if (remonr) {
+      this.UserService.deleteUser(_id).subscribe(() => {
+        this.user = this.user.filter(item => item._id !== _id)
+      })
+    } else {
+      this.user
+    }
   }
 
 

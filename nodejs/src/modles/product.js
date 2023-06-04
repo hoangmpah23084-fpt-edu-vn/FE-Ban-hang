@@ -19,6 +19,10 @@ const productSchema = new Schema({
         type: String,
     },
 
+    status: {
+        type: Boolean
+    },
+
     categoryId: {
         type: mongoose.Types.ObjectId,
         ref: "Category",
