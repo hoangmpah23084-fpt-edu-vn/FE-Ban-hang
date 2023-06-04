@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: '', component: BaseLayoutUserComponent, children: [
       { path: '', component: HomePageComponent },
-      { path: 'page-detail', component: PageDetailComponent },
+      { path: 'product/:id', component: PageDetailComponent },
     ]
   },
   { path: 'signin', component: SigninComponent },

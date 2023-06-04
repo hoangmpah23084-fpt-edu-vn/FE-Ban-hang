@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ICategory } from 'src/app/interface/category';
 import { IProduct } from 'src/app/interface/product';
 import { ProductService } from 'src/app/service/product.service';
@@ -25,7 +26,7 @@ export class ProductAddComponent {
   get checkForm() { return this.productAddForm.controls }
   constructor(
     private formBuilder: FormBuilder,
-    private productService: ProductService) {
+    private productService: ProductService, private router: Router) {
     this.productService.getCategory().subscribe(response => {
       console.log(response.data);
       this.categorys = response.data
@@ -75,6 +76,7 @@ export class ProductAddComponent {
     this.productService.addProduct(product).subscribe(response => {
       console.log(response);
       alert("Thêm thành công")
+      this.router.navigate(['admin/product'])
     }, (error) => {
       alert("Thêm không thành công")
     }

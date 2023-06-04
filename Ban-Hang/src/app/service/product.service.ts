@@ -27,8 +27,6 @@ export class ProductService {
     const url = `${this.API}/products/${id}`;
     return this.http.get<IProduct>(url, this.httpOptions)
   }
-
-
   addProduct(product: IProduct): Observable<IProduct> {
     const url = `${this.API}/products`;
     return this.http.post<IProduct>(url, product, this.httpOptions)
