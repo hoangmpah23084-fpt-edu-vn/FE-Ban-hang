@@ -43,7 +43,7 @@ import { ProductUpdateComponent } from './pages/product-update/product-update.co
 
     ProductListComponent,
     ProductDetailAdminComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
 
 
     UserComponent,

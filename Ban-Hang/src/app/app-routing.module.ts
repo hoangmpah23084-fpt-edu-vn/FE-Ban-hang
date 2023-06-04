@@ -41,13 +41,13 @@ const routes: Routes = [
       { path: 'product', component: ProductListComponent },
       { path: 'product/add', component: ProductAddComponent },
       { path: 'product/:id', component: ProductDetailAdminComponent },
-      { path: 'product/:id/edit', component: ProductUpdateComponent }
+      { path: 'product/:id/edit', component: ProductUpdateComponent },
 
 
       { path: 'product/add', component: ProductAddComponent },
       { path: 'user', component: UserComponent },
       { path: 'user/:id/edit', component: UserUpdateComponent },
-      {path:'product',component:ProductListComponent}
+      { path: 'product', component: ProductListComponent }
 
 
     ]
