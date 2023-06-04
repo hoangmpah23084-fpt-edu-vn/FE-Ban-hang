@@ -15,10 +15,7 @@ export class ProductListComponent {
       this.products = response.data
     }
     )
-
   }
-
-
   removeId(_id: any) {
     this.productService.deleteProduct(_id).subscribe(() => {
       this.products = this.products.filter(product => product._id !== _id)

@@ -16,9 +16,15 @@ import { DashBoardComponent } from './pages/dash-board/dash-board.component';
 import { ListCategoriesComponent } from './pages/list-categories/list-categories.component';
 import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
+
+import { CommonModule } from '@angular/common';
+import { UserComponent } from './pages/user/user.component';
+import { UserUpdateComponent } from './pages/user-update/user-update.component';
+
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductDetailAdminComponent } from './pages/product-detail-admin/product-detail-admin.component';
 import { ProductUpdateComponent } from './pages/product-update/product-update.component';
+
 
 @NgModule({
   declarations: [
@@ -34,16 +40,26 @@ import { ProductUpdateComponent } from './pages/product-update/product-update.co
     ListCategoriesComponent,
     CategoryEditComponent,
     ProductAddComponent,
+
     ProductListComponent,
     ProductDetailAdminComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+
+
+    UserComponent,
+    UserUpdateComponent,
+
+    ProductListComponent
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

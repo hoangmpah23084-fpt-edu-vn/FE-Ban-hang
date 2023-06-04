@@ -1,26 +1,5 @@
-<!-- ----------------------------------------------------------------------------------------------------------------- -->
 
-<section class="bg-gray-100">
-    <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-            <div class="lg:col-span-2 lg:py-12">
-                <p class="max-w-xl text-lg">
-                    At the same time, the fact that we are wholly owned and totally
-                    independent from manufacturer and other group control gives you
-                    confidence that we will only recommend what is right for you.
-                </p>
-
-                <div class="mt-8">
-                    <a href="" class="text-2xl font-bold text-pink-600">
-                        0151 475 4450
-                    </a>
-
-                    <address class="mt-2 not-italic">
-                        282 Kevin Brook, Imogeneborough, CA 58517
-                    </address>
-                </div>
-            </div>
-
+<form (ngSubmit)="onHandleSubmit()" [formGroup]="productAddForm">
             <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
                 <form action="" class="space-y-4" (ngSubmit)="onHandleSubmit()" [formGroup]="productAddForm">
                     <div>
@@ -81,6 +60,38 @@
                                 </select>
                             </div>
                         </div>
+
+    <div class="form-group">
+        <label>Status</label>
+        <select formControlName="status" class="form-control">
+            <option value="">Trạng thái</option>
+            <option value="true">Hoạt động</option>
+            <option value="false">Hết hàng</option>
+            <div *ngIf="checkForm['status'].invalid &&checkForm['status'].dirty ">
+                <div *ngIf="checkForm['status'].getError('required')">
+                    <span class="errormessage">status không được để trống</span>
+                </div>
+            </div>
+        </select>
+    </div>
+
+    <ngx-dropzone (change)="onSelectImage($event)" formControlName="images">
+        <h1 style="margin-left: 5px; font-size: 11px;">Upload Main</h1>
+        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemovem(f)">
+            <ngx-dropzone-label>
+                {{ this.url| async}}
+                {{f.name}}
+            </ngx-dropzone-label>
+        </ngx-dropzone-preview>
+    </ngx-dropzone>
+    <div class="button" style="text-align: center;">
+
+        <a href="admin/products"><button type="button" class="btn btn-outline-danger">Quay
+                lại</button>
+        </a>
+        <button class="btn btn-outline-danger">Submit</button>
+    </div>
+
 
 
                     </div>

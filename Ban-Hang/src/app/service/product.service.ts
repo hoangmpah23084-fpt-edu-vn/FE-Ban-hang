@@ -23,8 +23,8 @@ export class ProductService {
     const url = `${this.API}/products`;
     return this.http.get<IProduct[]>(url, this.httpOptions)
   }
-  getProduct(id: string): Observable<IProduct> {
-    const url = `${this.API}/products/${id}`;
+  getProduct(_id: string | null): Observable<IProduct> {
+    const url = `${this.API}/products/${_id}`;
     return this.http.get<IProduct>(url, this.httpOptions)
   }
   addProduct(product: IProduct): Observable<IProduct> {
@@ -32,9 +32,9 @@ export class ProductService {
     return this.http.post<IProduct>(url, product, this.httpOptions)
 
   }
-  updateProduct(product: IProduct): Observable<IProduct> {
-    const url = `${this.API}/products/${product._id}`;
-    return this.http.patch<IProduct>(url, product, this.httpOptions);
+  updateProduct(products: IProduct): Observable<IProduct> {
+    const url = `${this.API}/products/${products._id}`;
+    return this.http.patch<IProduct>(url, products, this.httpOptions);
   }
 
   deleteProduct(id: number): Observable<IProduct> {

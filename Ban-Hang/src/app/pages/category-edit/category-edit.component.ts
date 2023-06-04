@@ -44,7 +44,7 @@ export class CategoryEditComponent {
 
   onhandelSubmit() {
     const category: ICategory = {
-      id: this.category._id,
+      _id: this.category._id,
       name: this.formCategory.value.name || ""
     }
     console.log(category)
