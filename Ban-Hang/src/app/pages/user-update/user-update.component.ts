@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { User } from 'src/app/interface/auth';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute,  } from '@angular/router';
 
 @Component({
   selector: 'app-user-update',
@@ -23,7 +23,8 @@ export class UserUpdateComponent {
   constructor(
     private formUsers : FormBuilder,
     private Users: UserService,
-    private Ac : ActivatedRoute
+    private Ac : ActivatedRoute,
+    private navige : Router
   ){
     this.Ac.paramMap.subscribe(params =>{
       const _id = params.get('id');
@@ -46,15 +47,16 @@ export class UserUpdateComponent {
   
   onhandelSubmit() {
     const users: User = {
-      id:this.user.data._id,
+      _id:this.user.data._id,
       name: this.formUser.value.name || "",
       email: this.formUser.value.email || "",
       role:this.formUser.value.role ||""
     };
-    console.log(users.id);
+    console.log(users._id);
     this.Users.updateUser(users).subscribe(response => {
       console.log(response);
       alert("Cập nhật danh mục thành công");
+      this.navige.navigate(['admin/user'])
     },
       (error) => {
         alert('Cập nhật mục thất bại');

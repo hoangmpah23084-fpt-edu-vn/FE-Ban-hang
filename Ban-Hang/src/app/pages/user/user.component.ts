@@ -23,7 +23,7 @@ export class UserComponent {
    const remonr = confirm('ban muốn xóa');
    if(remonr){
     this.UserService.deleteUser(_id).subscribe(()=>{
-      this.user = this.user.filter(item =>item.id !== _id)
+      this.user = this.user.filter(item =>item._id !== _id)
     })
    }
   }

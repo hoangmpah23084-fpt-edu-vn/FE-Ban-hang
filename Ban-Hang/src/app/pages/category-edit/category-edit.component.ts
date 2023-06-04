@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ICategory } from 'src/app/interface/category';
 import { CategoryService } from 'src/app/service/category.service';
 
@@ -21,7 +21,8 @@ export class CategoryEditComponent {
   constructor(
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
-    private categoryDetailService: ActivatedRoute
+    private categoryDetailService: ActivatedRoute,
+    private navige : Router
   ) {
     this.categoryDetailService.paramMap.subscribe(params => {
       const _id = params.get('id')
@@ -44,14 +45,14 @@ export class CategoryEditComponent {
 
   onhandelSubmit() {
     const category: ICategory = {
-      id: this.category._id,
+      _id: this.category._id,
       name: this.formCategory.value.name || ""
     }
     console.log(category)
     this.categoryService.categoryUpdate(category).subscribe(response => {
       console.log(response);
       alert("Cập nhật danh mục thành công")
-
+      this.navige.navigate(['admin/category'])
     },
       (error) => {
         alert('Cập nhật mục thất bại');

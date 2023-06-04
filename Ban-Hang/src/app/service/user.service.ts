@@ -19,7 +19,7 @@ export class UserService {
     return this.http.get<User>(`${this.API_URL}/User/${id}`);
   }
   updateUser(user: User): Observable<User> {
-    return this.http.patch<User>(`${this.API_URL}/User/${user.id}`, user);
+    return this.http.patch<User>(`${this.API_URL}/User/${user._id}`, user);
   }
   deleteUser(id:number): Observable<User> {
     return this.http.delete<User>(`${this.API_URL}/User/${id}`);

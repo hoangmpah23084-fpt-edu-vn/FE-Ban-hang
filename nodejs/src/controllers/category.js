@@ -70,6 +70,18 @@ export const getOne = async (req, res) => {
 
     }
 }
+export const remove = async (req, res) => {
+    try {
+        const data = await Category.findByIdAndDelete({ _id: req.params.id })
+        return res.status(201).json({
+            message: "Xóa sản phẩm thành công"
+        })
+    } catch (error) {
+        return res.status(400).json({
+        })
+    }
+}
+
 
 export const getAll = async (req, res) => {
     try {

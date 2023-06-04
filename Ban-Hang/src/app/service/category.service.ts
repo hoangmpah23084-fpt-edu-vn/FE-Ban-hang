@@ -26,12 +26,21 @@ export class CategoryService {
   }
 
   categoryUpdate(category: ICategory): Observable<ICategory> {
-    const url = `${this.API}/categorys/${category.id}`;
+    const url = `${this.API}/categorys/${category._id}`;
     return this.http.patch<ICategory>(url, category, this.httpOptions)
   }
   getCategory(id: string | null): Observable<ICategory> {
     const url = `${this.API}/categorys/${id}`;
     return this.http.get<ICategory>(url, this.httpOptions)
   }
+  deleteCategory(_id: string | null): Observable<ICategory> {
+    const url = `${this.API}/categorys/${_id}`;
+    return this.http.delete<ICategory>(url, this.httpOptions)
+  }
+  getCategoryAll(): Observable<ICategory[]> {
+    const url = `${this.API}/categorys`;
+    return this.http.get<ICategory[]>(url, this.httpOptions)
+  }
+  
 
 }
