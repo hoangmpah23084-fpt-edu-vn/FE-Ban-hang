@@ -10,10 +10,7 @@ import { CategoryService } from 'src/app/service/category.service';
   styleUrls: ['./category-edit.component.scss']
 })
 export class CategoryEditComponent {
-
-
   category!: any;
-
   formCategory = this.formBuilder.group({
     name: new FormControl('', Validators.required),
   })

@@ -1,25 +1,54 @@
-<table class="table">
-    <thead>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <td class="px-6 py-4">
+    <a routerLink="add" class="font-medium text-sky-600 dark:text-red-500 hover:underline">ADD PRODUCT</a>
+  </td>
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">name</th>
-        <th scope="col">price</th>
-        <th scope="col">Images</th>
-        <th>Action</th>
+
+        <th scope="col" class="px-6 py-3">
+          <span class="">Image</span>
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Product Name
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Price
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Price Sale
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Action
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of products ">
-        <th scope="row">{{item._id}}</th>
-        <td>{{item.name}}</td>
-        <td>{{item.price}}</td>
-        <td>
-            <img width="100px" [src]="item.images" />
+      <tr *ngFor="let item of products "
+        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+        <td class="w-32 p-4">
+          <img [src]="item.images" alt="Apple Watch">
         </td>
-        <td>
-            <button class="fw-bold text-primary" (click)="removeId(item._id!)">xóa</button>
+        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+          <a routerLink="{{item._id}}">{{item.name}}</a>
+
+        </td>
+
+        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+          $ {{item.price}}
+        </td>
+        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+          $ {{item.priceSale}}
+        </td>
+        <td class="px-6 py-4">
+          <button (click)="removeId(item._id!)"
+            class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</button>
+          <a routerLink="{{item._id}}/edit">
+            <button class="font-medium text-sky-600 ml-4 dark:text-red-500 hover:underline">Update</button></a>
         </td>
       </tr>
-      
+
     </tbody>
   </table>
+</div>

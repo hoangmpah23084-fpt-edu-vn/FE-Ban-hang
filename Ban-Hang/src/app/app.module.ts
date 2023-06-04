@@ -22,6 +22,8 @@ import { UserComponent } from './pages/user/user.component';
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
 
 import { ProductListComponent } from './pages/product-list/product-list.component';
+import { ProductDetailAdminComponent } from './pages/product-detail-admin/product-detail-admin.component';
+import { ProductUpdateComponent } from './pages/product-update/product-update.component';
 
 
 @NgModule({
@@ -39,10 +41,16 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
     CategoryEditComponent,
     ProductAddComponent,
 
+    ProductListComponent,
+    ProductDetailAdminComponent,
+    ProductUpdateComponent
+
+
     UserComponent,
     UserUpdateComponent,
 
     ProductListComponent
+
 
   ],
   imports: [

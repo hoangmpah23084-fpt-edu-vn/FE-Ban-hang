@@ -17,13 +17,19 @@
           <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
         </form>
         <h1 *ngIf="userName; else links">Xin chào, {{ userName }}!</h1>
+        <button *ngIf="userName" type="button" (click)="logout()" class="btn btn-outline-primary ml-4">Log Out</button>
+        <a routerLink="admin" *ngIf="role === 'admin' && showAdmin" type="button"
+          class="btn btn-outline-primary ml-4">Admin</a>
 
         <ng-template #links>
           <div class="text-end">
-            <a routerLink="/signin"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-            <a routerLink="/signup"><button type="button" class="btn btn-warning text-white">Sign-up</button></a>
+            <a routerLink="/signin"><button *ngIf="!userName" type="button"
+                class="btn btn-outline-light me-2">Login</button></a>
+            <a routerLink="/signup"><button *ngIf="!userName" type="button"
+                class="btn btn-warning text-white">Sign-up</button></a>
           </div>
         </ng-template>
+
       </div>
     </div>
   </header>

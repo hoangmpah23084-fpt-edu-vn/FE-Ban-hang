@@ -4,7 +4,7 @@ export interface IProduct {
     price: string | number,
     priceSale: string | number,
     describe: string,
-    images: string,
-    categoryId: string,
+    images?: string,
+    categoryId?: string,
 
 }
