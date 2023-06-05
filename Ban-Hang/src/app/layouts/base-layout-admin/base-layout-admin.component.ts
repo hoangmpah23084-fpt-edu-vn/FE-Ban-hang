@@ -9,12 +9,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./base-layout-admin.component.scss']
 })
 export class BaseLayoutAdminComponent {
-  constructor(private router: Router) { }
 
   userName = localStorage.getItem('userName');
   role = localStorage.getItem('role');
   email = localStorage.getItem('email');
   showAdmin = true;
+
+  constructor(private router: Router) {
+    console.log(this.role);
+  }
+
+
+
+
+
+
+
+
   logout() {
     if (confirm('Bạn có muốn đăng xuất không ?')) {
       this.showAdmin = false;
@@ -30,4 +41,6 @@ export class BaseLayoutAdminComponent {
       this.router.navigate(['/signin']);
     }
   }
+
 }
+
