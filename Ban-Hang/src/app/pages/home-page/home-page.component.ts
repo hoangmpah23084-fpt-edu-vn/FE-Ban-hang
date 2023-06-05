@@ -11,9 +11,13 @@ export class HomePageComponent {
   products!: IProduct[]
   constructor(private productService: ProductService) {
     this.productService.getProducts().subscribe((response: any) => {
+
+      console.log(response.data)
+
       this.products = response.data
     }
     )
 
   }
+
 }

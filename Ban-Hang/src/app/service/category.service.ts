@@ -33,5 +33,14 @@ export class CategoryService {
     const url = `${this.API}/categorys/${id}`;
     return this.http.get<ICategory>(url, this.httpOptions)
   }
+  deleteCategory(_id: string | null): Observable<ICategory> {
+    const url = `${this.API}/categorys/${_id}`;
+    return this.http.delete<ICategory>(url, this.httpOptions)
+  }
+  getCategoryAll(): Observable<ICategory[]> {
+    const url = `${this.API}/categorys`;
+    return this.http.get<ICategory[]>(url, this.httpOptions)
+  }
+  
 
 }
