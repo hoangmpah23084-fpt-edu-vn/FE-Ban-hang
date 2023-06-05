@@ -73,26 +73,6 @@
                         </div>
                     </select>
                 </div>
-
-                <ngx-dropzone (change)="onSelectImage($event)" formControlName="images">
-                    <h1 style="margin-left: 5px; font-size: 11px;">Upload Main</h1>
-                    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemovem(f)">
-                        <ngx-dropzone-label>
-                            {{ this.url| async}}
-                            {{f.name}}
-                        </ngx-dropzone-label>
-                    </ngx-dropzone-preview>
-                </ngx-dropzone>
-                <div class="button" style="text-align: center;">
-
-                    <a href="admin/products"><button type="button" class="btn btn-outline-danger">Quay
-                            lại</button>
-                    </a>
-                    <button class="btn btn-outline-danger">Submit</button>
-                </div>
-
-
-
             </div>
             <ngx-dropzone (change)="onSelectImage($event)" formControlName="images">
                 <h1 style="margin-left: 5px; font-size: 11px;">Upload Main</h1>
