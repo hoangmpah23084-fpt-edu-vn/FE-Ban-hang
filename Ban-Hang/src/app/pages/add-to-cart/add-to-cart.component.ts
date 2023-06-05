@@ -27,8 +27,9 @@ export class AddToCartComponent {
     newQuantity = newQuantity > 0 ? newQuantity : 1;
     event.target.value = newQuantity;
     this.carts[i].quantity = newQuantity;
-    this.totalPrice = this.addToCartService.getAllPrice()
     this.addToCartService.saveCart(this.carts)
+    this.totalPrice = this.addToCartService.getAllPrice()
+
   }
 
   removeCart(i: number) {
