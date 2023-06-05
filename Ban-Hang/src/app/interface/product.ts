@@ -7,6 +7,7 @@ export interface IProduct {
     images?: string,
     categoryId: string,
     data?: string,
-    status: boolean
+    status: boolean,
+    quantity?: number,
 
 }
