@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { User } from 'src/app/interface/auth';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
-import { Router, ActivatedRoute,  } from '@angular/router';
+import { Router, ActivatedRoute, } from '@angular/router';
 
 @Component({
   selector: 'app-user-update',
@@ -24,12 +24,8 @@ export class UserUpdateComponent {
     private formUsers: FormBuilder,
     private Users: UserService,
 
-    private Ac : ActivatedRoute,
-    private navige : Router
-  ){
-    this.Ac.paramMap.subscribe(params =>{
-
-    private Ac: ActivatedRoute
+    private Ac: ActivatedRoute,
+    private navige: Router
   ) {
     this.Ac.paramMap.subscribe(params => {
 
@@ -48,9 +44,6 @@ export class UserUpdateComponent {
 
     }, error => console.log(error.message));
   };
-
-
-
   onhandelSubmit() {
     const users: User = {
       _id: this.user.data._id,
