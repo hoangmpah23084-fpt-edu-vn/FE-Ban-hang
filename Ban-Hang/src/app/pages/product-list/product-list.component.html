@@ -47,10 +47,10 @@
 
 
         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-          $ {{item.price}}
+          {{item.price | currency: "VND":true:'4.0-0' }} VND
         </td>
         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-          $ {{item.priceSale}}
+          {{item.priceSale | currency: "VND":true:'4.0-0' }} VND
         </td>
         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" *ngIf="item.status===false">
           Hết hàng

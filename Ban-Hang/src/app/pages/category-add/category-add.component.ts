@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ICategory } from 'src/app/interface/category';
 import { CategoryService } from 'src/app/service/category.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-add',
@@ -31,7 +32,13 @@ export class CategoryAddComponent {
 
     this.categoryService.categoryAdd(category).subscribe(data => {
       console.log(data);
-      alert("Thêm danh mục thành công")
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Add CateGory success',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.route.navigate(['admin/category'])
 
     },

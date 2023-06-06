@@ -3,6 +3,7 @@ import { User } from 'src/app/interface/auth';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
 import { Router, ActivatedRoute, } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-update',
@@ -54,7 +55,13 @@ export class UserUpdateComponent {
     console.log(users._id);
     this.Users.updateUser(users).subscribe(response => {
       console.log(response);
-      alert("Cập nhật danh mục thành công");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Update User success',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.navige.navigate(['admin/user'])
     },
       (error) => {

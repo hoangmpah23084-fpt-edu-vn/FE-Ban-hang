@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/app/interface/category';
 import { IProduct } from 'src/app/interface/product';
 import { ProductService } from 'src/app/service/product.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -106,7 +107,13 @@ export class ProductUpdateComponent {
     console.log(products._id);
     this.productService.updateProduct(products).subscribe(data => {
       console.log(data);
-      alert("Cập nhật danh mục thành công");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Update Product success',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.route.navigate(['/admin/product'])
     },
       (error) => {
