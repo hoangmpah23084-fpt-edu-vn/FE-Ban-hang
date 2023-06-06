@@ -13,15 +13,16 @@ export class ProductListComponent {
   products!: IProduct[]
   isShown: boolean = true
   searchValue: any
-  
-  
+  allProducts!: IProduct[];
+
   constructor(private productService: ProductService,
     private router: Router,
-    private route: ActivatedRoute ,
-    ) {
+    private route: ActivatedRoute,
+  ) {
     this.productService.getProducts().subscribe((response: any) => {
       console.log(response.data)
       this.products = response.data
+      this.allProducts = response.data
     }
     )
   }
@@ -53,12 +54,17 @@ export class ProductListComponent {
   onSearch() {
     console.log(`product:`, this.searchValue)
     this.isShown = true;
-    this.productService.getProducts().subscribe((response: any) => {
-      this.products = response.data.filter((product: any) => {
-        console.log(product.name.includes(this.searchValue));
-        return product.name.toLowerCase().includes(this.searchValue == "" ? null : this.searchValue.toLowerCase())
+    if (this.searchValue === "") {
+      this.products = this.allProducts
+    } else {
+      this.productService.getProducts().subscribe((response: any) => {
+        this.products = response.data.filter((product: any) => {
+          console.log(product.name.includes(this.searchValue));
+          return product.name.toLowerCase().includes(this.searchValue == "" ? null : this.searchValue.toLowerCase())
+        })
       })
-    })
+    }
+
 
   }
 
