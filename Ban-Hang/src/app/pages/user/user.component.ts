@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from 'src/app/interface/auth';
 import { UserService } from 'src/app/service/user.service';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
@@ -12,12 +13,18 @@ import Swal from 'sweetalert2';
 })
 export class UserComponent {
   user!: User[]
+  searchValue: any
+  isShown: boolean = true
+  allUsers!: User[]
+
   constructor(
-    private UserService: UserService
+    private UserService: UserService,
+    private router: Router,
   ) {
     this.UserService.getUsers().subscribe((response: any) => {
       console.log(response.data)
       this.user = response.data
+      this.allUsers = response.data
     })
   }
 
@@ -43,6 +50,39 @@ export class UserComponent {
       }
     })
   }
+  ngOnInit() {
+    this.onSearch();
 
+
+  }
+
+  onSearch() {
+    console.log(`product:`, this.searchValue)
+    this.isShown = true;
+    if (this.searchValue === "") {
+      this.user = this.allUsers;
+    } else {
+      this.UserService.getUsers().subscribe((response: any) => {
+        this.user = response.data.filter((user: any) => {
+          return user.name.toLowerCase().includes(this.searchValue == "" ? null : this.searchValue.toLowerCase())
+            || user.email.toLowerCase().includes(this.searchValue == "" ? null : this.searchValue.toLowerCase());
+        })
+      })
+    }
+
+  }
+
+
+  onClickOutside() {
+    this.isShown = false;
+  }
+
+
+  onClick(item: User) {
+    this.isShown = !this.isShown;
+    this.router.navigate(['/product', item._id]).then(() => {
+      window.location.reload();
+    });
+  }
 
 }
