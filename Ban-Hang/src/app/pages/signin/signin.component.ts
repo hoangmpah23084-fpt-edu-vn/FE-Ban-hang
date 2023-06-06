@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { User } from 'src/app/interface/auth';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -44,11 +45,23 @@ export class SigninComponent {
           let token = localStorage.getItem('token');
           console.log(token);
           if (data.user.role === "admin") {
-            alert('Chào mừng quản trị viên')
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Login Admin success',
+              showConfirmButton: false,
+              timer: 1500
+            })
             this.router.navigate(['/']);
 
           } else {
-            alert('Đăng nhập thành công');
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Login success',
+              showConfirmButton: false,
+              timer: 1500
+            })
             this.router.navigate(['/'])
           }
 

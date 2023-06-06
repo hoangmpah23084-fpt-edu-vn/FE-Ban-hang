@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/app/interface/category';
 import { CategoryService } from 'src/app/service/category.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-edit',
@@ -22,7 +23,7 @@ export class CategoryEditComponent {
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
     private categoryDetailService: ActivatedRoute,
-    private navige : Router
+    private navige: Router
   ) {
     this.categoryDetailService.paramMap.subscribe(params => {
       const _id = params.get('id')
@@ -51,7 +52,13 @@ export class CategoryEditComponent {
     console.log(category)
     this.categoryService.categoryUpdate(category).subscribe(response => {
       console.log(response);
-      alert("Cập nhật danh mục thành công")
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Update CateGory success',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.navige.navigate(['admin/category'])
     },
       (error) => {

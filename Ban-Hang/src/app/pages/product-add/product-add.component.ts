@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ICategory } from 'src/app/interface/category';
 import { IProduct } from 'src/app/interface/product';
 import { ProductService } from 'src/app/service/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-add',
@@ -78,7 +79,13 @@ export class ProductAddComponent {
     }
     this.productService.addProduct(product).subscribe(response => {
       console.log(response);
-      alert("Thêm thành công")
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Add Product success',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.router.navigate(['admin/product'])
     }, (error) => {
       alert("Thêm không thành công")
