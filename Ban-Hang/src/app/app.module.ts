@@ -16,6 +16,9 @@ import { DashBoardComponent } from './pages/dash-board/dash-board.component';
 import { ListCategoriesComponent } from './pages/list-categories/list-categories.component';
 import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
+import {FormsModule} from "@angular/forms"
+import {ClickOutsideModule} from 'ng-click-outside'
+
 
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './pages/user/user.component';
@@ -60,7 +63,9 @@ import { ProductUpdateComponent } from './pages/product-update/product-update.co
     HttpClientModule,
     ReactiveFormsModule,
     NgxDropzoneModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ClickOutsideModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,7 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class ProductListComponent {
   products!: IProduct[]
+  
   constructor(private productService: ProductService) {
     this.productService.getProducts().subscribe((response: any) => {
       console.log(response.data)
