@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IProduct } from 'src/app/interface/product';
 import { ProductService } from 'src/app/service/product.service';
 import Swal from 'sweetalert2';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -10,8 +11,14 @@ import Swal from 'sweetalert2';
 })
 export class ProductListComponent {
   products!: IProduct[]
+  isShown: boolean = true
+  searchValue: any
   
-  constructor(private productService: ProductService) {
+  
+  constructor(private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute ,
+    ) {
     this.productService.getProducts().subscribe((response: any) => {
       console.log(response.data)
       this.products = response.data
@@ -40,5 +47,31 @@ export class ProductListComponent {
       }
     })
 
+  }
+
+
+  onSearch() {
+    console.log(`product:`, this.searchValue)
+    this.isShown = true;
+    this.productService.getProducts().subscribe((response: any) => {
+      this.products = response.data.filter((product: any) => {
+        console.log(product.name.includes(this.searchValue));
+        return product.name.toLowerCase().includes(this.searchValue == "" ? null : this.searchValue.toLowerCase())
+      })
+    })
+
+  }
+
+
+  onClickOutside() {
+    this.isShown = false;
+  }
+
+
+  onClick(item: IProduct) {
+    this.isShown = !this.isShown;
+    this.router.navigate(['/product', item._id]).then(() => {
+      window.location.reload();
+    });
   }
 }
