@@ -1,4 +1,6 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <input [(ngModel)]="searchValue" name="searchValue" type="search" class="form-control form-control-dark"
+        placeholder="Search..." aria-label="Search" (input)="onSearch()" (keyup)="onSearch()">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -34,7 +36,7 @@
                 </td>
                 <td class="px-6 py-4">
 
-                    <button  class="btn btn-danger  m-3" (click)="Remove(item._id!)">Remove</button>
+                    <button class="btn btn-danger  m-3" (click)="Remove(item._id!)">Remove</button>
 
                     <a [routerLink]="[item._id,'edit']" class="btn btn-success">Update</a>
                 </td>
