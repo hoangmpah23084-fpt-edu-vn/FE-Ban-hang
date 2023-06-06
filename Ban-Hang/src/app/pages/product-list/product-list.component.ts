@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class ProductListComponent {
   products!: IProduct[]
+  
   constructor(private productService: ProductService) {
     this.productService.getProducts().subscribe((response: any) => {
       console.log(response.data)

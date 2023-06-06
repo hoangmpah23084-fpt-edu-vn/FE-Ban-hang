@@ -13,9 +13,26 @@
           <li><a href="#" class="nav-link px-2 text-white">About</a></li>
         </ul>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-        </form>
+        <div class="layout ">
+          <div class="position-relative mr-5 left-1000 ">
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+              <input [(ngModel)]="searchValue" name="searchValue" type="search" class="form-control form-control-dark"
+                placeholder="Search..." aria-label="Search" (input)="onSearch()">
+            </form>
+            <div class="position-absolute w-100% mr-3 bg-white rounded "*ngIf="isShown" (clickOutside)="onClickOutside()">
+
+              <div  *ngFor="let item of products" >
+                
+                <a class="d-flex flex-wrap mb-2  " (click)="onClick(item)" routerLink="product/{{item._id}}" >
+                  <img width="50px" [src]="item.images" alt="">
+                  <p class="p1 text-body">{{item.name}}</p>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
         <h1 *ngIf="userName; else links">Xin chào, {{ userName }}!</h1>
         <button *ngIf="userName" type="button" (click)="logout()" class="btn btn-outline-primary ml-4">Log Out</button>
         <a routerLink="admin" *ngIf="role === 'admin' && showAdmin" type="button"
