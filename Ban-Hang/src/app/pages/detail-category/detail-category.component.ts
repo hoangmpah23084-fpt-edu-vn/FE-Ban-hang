@@ -13,6 +13,8 @@ import { IProduct } from 'src/app/interface/product';
 export class DetailCategoryComponent {
   category!: ICategory;
   products!: any;
+  product!: any
+  test: any[] = []
 
   constructor(
     private router: ActivatedRoute,
@@ -20,24 +22,15 @@ export class DetailCategoryComponent {
     private productService: ProductService
   ) {
     const id = this.router.snapshot.paramMap.get('id');
-    if (id) {
-      this.categoryService.getproductByCategory(id).subscribe(response => {
-        this.products = response;
-
-        for (let id of this.products.products) {
-          this.productService.getProduct(id).subscribe(product => {
-            if (id) {
-              this.productService.getProduct(id).subscribe((response: any) => {
-                this.products = response.data
-
-              });
-            }
-          });
-        }
-
-      });
-    }
-
+    this.categoryService.getproductByCategory(id!).subscribe(response => {
+      this.products = response;
+      for (let id of this.products.products) {
+        this.productService.getProduct(id).subscribe((response: any) => {
+          this.test.push(response.data);
+        });
+      }
+      console.log(this.test);
+    });
   }
 }
 
