@@ -16,8 +16,8 @@ import { DashBoardComponent } from './pages/dash-board/dash-board.component';
 import { ListCategoriesComponent } from './pages/list-categories/list-categories.component';
 import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
-import {FormsModule} from "@angular/forms"
-import {ClickOutsideModule} from 'ng-click-outside'
+import { FormsModule } from "@angular/forms"
+import { ClickOutsideModule } from 'ng-click-outside'
 
 
 import { CommonModule } from '@angular/common';
@@ -55,13 +55,13 @@ import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
     UserUpdateComponent,
 
     ProductListComponent,
-      DetailCategoryComponent
-      AddToCartComponent
+    DetailCategoryComponent,
+    AddToCartComponent
 
 
   ],
   imports: [
-    
+
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
