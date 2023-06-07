@@ -42,7 +42,8 @@
                 <div class="mx-4 mt-3 ">
                     <div class="card" style="width: 18rem;">
                         <a routerLink="product/{{item._id}}">
-                            <img [src]="item.images" class="card-img-top" alt="...">
+                            <img [src]="item.images" class="card-img-top p-2" style="object-fit: cover; height: 270px; "
+                                alt="...">
                             <h3 class="ml-4 mt-2 text-orange-700 font-semibold text-xl">{{item.name}}</h3>
                         </a>
                         <div class="card-body">
