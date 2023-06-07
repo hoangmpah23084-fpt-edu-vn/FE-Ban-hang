@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ICategory } from '../interface/category';
 import { Observable } from 'rxjs';
+import { IProduct } from '../interface/product';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,10 @@ export class CategoryService {
     const url = `${this.API}/categorys`;
     return this.http.get<ICategory[]>(url, this.httpOptions)
   }
-  
+
+  getproductByCategory(_id: string): Observable<IProduct> {
+    const url = `${this.API}/categorys/${_id}`;
+    return this.http.get<IProduct>(url, this.httpOptions);
+  }
 
 }
