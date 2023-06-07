@@ -14,6 +14,11 @@ export class ProductListComponent {
   isShown: boolean = true
   searchValue: any
   allProducts!: IProduct[];
+  // limt +Page
+  page:number=1;
+  tabSize:number=2;
+  tabSizes:number[]=[4, 6, 8, 10, 100]
+  count:number=0
 
   constructor(private productService: ProductService,
     private router: Router,
@@ -26,6 +31,29 @@ export class ProductListComponent {
     }
     )
   }
+//  limit_page
+onHandleSubmit(){
+  this.productService.getProducts().subscribe((response:any) => {
+    console.log(response.data)
+    this.products = response.data
+    this.allProducts = response.data
+  }
+  )
+}
+onHandleLimit(event:any){
+  this.tabSize = event.target.value;
+  this.page=1
+  this.onHandleSubmit()
+  console.log( this.onHandleSubmit());
+  
+}
+
+onHandlesPage(event:any){
+  this.page= event;
+  this.onHandleSubmit()
+
+}
+
   removeId(_id: any) {
     Swal.fire({
       title: 'Delete?',

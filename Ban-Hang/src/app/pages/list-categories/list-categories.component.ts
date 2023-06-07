@@ -15,6 +15,13 @@ export class ListCategoriesComponent {
   searchValue: any
   isShown: boolean = true
   allCategory!: ICategory[];
+  //  listmist + page
+  page : number = 1
+  tabSize : number = 2
+  tabSizes : any[]= [2, 4 ,6 ,8,1000]
+  count:number=0
+  
+
   constructor(private cate: CategoryService,
     private route: ActivatedRoute,
     private router: Router) {
@@ -24,6 +31,29 @@ export class ListCategoriesComponent {
       this.allCategory = response.data;
     })
   }
+  //  limit_page
+onHandleSubmit(){
+  this.cate.getCategoryAll().subscribe((response: any) => {
+    console.log(response.data)
+    this.category = response.data
+    this.allCategory = response.data
+  }
+  )
+}
+onHandleLimit(event:any){
+  this.tabSize = event.target.value;
+  console.log(event.target.value)
+  this.page=1
+  this.onHandleSubmit()
+  console.log(this.onHandleSubmit());
+  
+}
+
+onHandlesPage(event:any){
+  this.page= event;
+  this.onHandleSubmit()
+
+}
   Remove(_id: any) {
     Swal.fire({
       title: 'Delete?',

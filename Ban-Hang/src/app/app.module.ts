@@ -18,16 +18,14 @@ import { CategoryEditComponent } from './pages/category-edit/category-edit.compo
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import {FormsModule} from "@angular/forms"
 import {ClickOutsideModule} from 'ng-click-outside'
-
-
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './pages/user/user.component';
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
-
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductDetailAdminComponent } from './pages/product-detail-admin/product-detail-admin.component';
 import { ProductUpdateComponent } from './pages/product-update/product-update.component';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
+import { NgxPaginationModule} from "ngx-pagination"
 
 
 @NgModule({
@@ -67,7 +65,8 @@ import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
     NgxDropzoneModule,
     CommonModule,
     FormsModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
