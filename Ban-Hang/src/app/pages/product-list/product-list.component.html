@@ -1,5 +1,6 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
   <div class="">
+
   <td class="px-6 py-4">
     <a routerLink="add" class="font-medium text-sky-600 dark:text-red-500 hover:underline">ADD PRODUCT</a>
   </td>
@@ -11,6 +12,14 @@
   <input [(ngModel)]="searchValue" name="searchValue" type="search" class="form-control form-control-dark"
   placeholder="Search..." aria-label="Search" (input)="onSearch()" (keyup)="onSearch()">
 </div>
+
+    <td class="px-6 py-4">
+      <a routerLink="add" class="font-medium text-sky-600 dark:text-red-500 hover:underline">ADD PRODUCT</a>
+    </td>
+    <input [(ngModel)]="searchValue" name="searchValue" type="search" class="form-control form-control-dark"
+      placeholder="Search..." aria-label="Search" (input)="onSearch()" (keyup)="onSearch()">
+  </div>
+
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
@@ -58,10 +67,10 @@
 
 
         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-          {{item.price | currency: "VND":true:'4.0-0' }} VND
+          {{ formatCurrency(item.price) }}
         </td>
         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-          {{item.priceSale | currency: "VND":true:'4.0-0' }} VND
+          {{ formatCurrency(item.priceSale) }}
         </td>
         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" *ngIf="item.status===false">
           Hết hàng
