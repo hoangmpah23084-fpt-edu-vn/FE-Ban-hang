@@ -18,7 +18,7 @@ export class ProductAddComponent {
   productAddForm = this.formBuilder.group({
     name: new FormControl('', Validators.required),
     price: new FormControl(0, Validators.required),
-    priceSale: new FormControl(0, Validators.required),
+    priceSale: new FormControl(0),
     describe: new FormControl('', Validators.compose([Validators.required, Validators.minLength(10)])),
     images: new FormControl('', Validators.required),
     status: new FormControl(true, Validators.required),
