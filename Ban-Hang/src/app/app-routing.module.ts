@@ -18,6 +18,7 @@ import { UserUpdateComponent } from './pages/user-update/user-update.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductDetailAdminComponent } from './pages/product-detail-admin/product-detail-admin.component';
 import { ProductUpdateComponent } from './pages/product-update/product-update.component';
+import { DetailCategoryComponent } from './pages/detail-category/detail-category.component';
 
 
 
@@ -39,6 +40,8 @@ const routes: Routes = [
       { path: 'dashboard', component: DashBoardComponent },
       { path: 'category', component: ListCategoriesComponent },
       { path: 'category/add', component: CategoryAddComponent },
+      { path: 'category/:id/detail', component: DetailCategoryComponent },
+
       { path: 'category/:id/edit', component: CategoryEditComponent },
 
       { path: 'product', component: ProductListComponent },
