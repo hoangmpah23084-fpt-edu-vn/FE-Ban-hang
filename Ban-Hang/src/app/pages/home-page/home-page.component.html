@@ -46,12 +46,22 @@
                             <h3 class="ml-4 mt-2 text-orange-700 font-semibold text-xl">{{item.name}}</h3>
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title text-danger">${{item.priceSale}}<span class="text-muted ">-
-                                    ${{item.price}}</span>
+                            <h5 class="card-title text-danger"><span class="text-muted "
+                                    style="text-decoration: line-through; margin-right: 4px;">
+                                    {{item.price | currency:'':true:'4.0-0' }} VND</span>{{item.priceSale |
+                                currency:'':true:'4.0-0' }} VND
                             </h5>
                             <p class="card-text">{{item.describe}}
                             </p>
-                            <a href="#" class="btn btn-primary">Mua ngay</a>
+                            <div class="card-button"
+                                style="text-align: center; display: flex; justify-content: space-around;">
+                                <button class="btn btn-outline-secondary"><i class="fa fa-heart"></i>
+                                </button>
+                                <a href="#" class="btn btn-outline-danger">Mua ngay</a>
+                                <button class="btn btn-outline-primary" (click)="addToCart(item)"><i
+                                        class="fa fa-cart-plus"></i>
+                                </button>
+                            </div>
                         </div>
 
                     </div>
