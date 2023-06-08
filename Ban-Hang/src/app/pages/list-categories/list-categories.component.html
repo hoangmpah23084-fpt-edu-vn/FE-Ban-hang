@@ -4,6 +4,11 @@
             <a routerLink="add" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">ADD
                 CATEGORY</a>
         </td>
+        <td class="px-6 py-4">
+            <select  (change)="onHandleLimit($event)">
+              <option *ngFor="let size of tabSizes" [ngValue]="size">{{size}}</option>
+            </select>
+          </td>
         <input [(ngModel)]="searchValue" name="searchValue" type="search" class="form-control form-control-dark"
                 placeholder="Search..." aria-label="Search" (input)="onSearch()" (keyup)="onSearch()">
     </div>
@@ -21,7 +26,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let cate of category" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr *ngFor="let cate of category | paginate:{itemsPerPage: tabSize,
+                currentPage: page,
+                totalItems: count}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 
                 <td class="px-6 py-4">
                     <a routerLink="{{cate._id}}/detail">
@@ -31,11 +38,9 @@
                     <a [routerLink]="[cate._id,'edit']"
                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     <button class="btn btn-danger  m-3" (click)="Remove(cate._id!)">Remove</button>
-
                 </td>
             </tr>
-
-
         </tbody>
     </table>
+    <pagination-controls previousLabel="Truoc" nextLabel="tiep" (pageChange)="onHandlesPage($event)"></pagination-controls>
 </div>
