@@ -37,23 +37,23 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3 mt-14 ">
+            <div class="col-md-3 mt-14 w-[280px] ">
                 <!-- Danh mục -->
-                <h3 class="mb-2 text-xl font-semibold text-stone-500">Category:</h3>
+                <h3 class=" text-xl font-semibold text-stone-500">Category:</h3>
                 <ul class="list-group" *ngFor="let cate of category">
-                    <li class="list-group-item w-[200px]"><a href="">{{cate.name}}</a></li>
+                    <li class="list-group-item w-[220px]"><a routerLink="categorys/{{cate._id}} ">{{cate.name}}</a></li>
                 </ul>
             </div>
-            <div class="col-md-9 mt-3">
+            <div class="col-md-9 mt-6 mt-[80px] ml-[10px]">
                 <div class="row mx-0">
-                    <div class="col-md-3 mb-4" *ngFor="let item of products; index as i">
+                    <div class="col-md-3 mb-4 " *ngFor="let item of products; index as i">
                         <div class="card h-[420px]" style="width: 100%;">
                             <a routerLink="product/{{item._id}}">
                                 <img [src]="item.images" class="card-img-top p-2"
                                     style="object-fit: cover; height: 220px;" alt="..." />
                                 <h3 class="ml-4 mt-2 text-orange-700 font-semibold text-xl">{{item.name}}</h3>
                             </a>
-                            <div class="card-body">
+                            <div class="card-body shadow-2xl rounded-lg ">
                                 <h5 class="card-title text-danger" *ngIf="item.priceSale !== 0">
                                     <span class="text-muted" style="text-decoration: line-through; margin-right: 4px;">
                                         {{ formatCurrency(item.price) }}
