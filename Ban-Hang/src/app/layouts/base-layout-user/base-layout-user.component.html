@@ -4,17 +4,15 @@
       <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <img width="100px" src="https://iweb.tatthanh.com.vn/pic/3/blog/images/logo-shop-dien-thoai-7.jpg" alt="">
       </a>
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <ul class="nav col-8 col-lg-auto me-lg-4 mb-2 justify-content-center mb-md-0">
         <li><a href="#" class="nav-link px-2 text-secondary">Trang chủ</a></li>
         <li><a href="#" class="nav-link px-2 text-white">Sản Phẩm</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Tin Tức</a></li>
         <li><a href="#" class="nav-link px-2 text-white">About</a></li>
       </ul>
 
       <div class="layout ">
         <div class="position-relative mr-5">
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <form class="col-5 col-lg-auto mb-3 mb-lg-0 me-lg-3">
             <input [(ngModel)]="searchValue" name="searchValue" type="search" class="form-control form-control-dark"
               placeholder="Search..." aria-label="Search" (input)="onSearch()">
           </form>
@@ -46,10 +44,10 @@
               class="btn btn-warning text-white">Sign-up</button></a>
         </div>
       </ng-template>
-      <a routerLink="/cart"><button type="button" class="btn btn-outline-danger text-white"
-          style="margin-left: 10px;">Giỏ Hàng</button></a>
-
-
+      <a routerLink="/favourite"><button type="button" class="btn btn-outline-danger text-white"
+          style="margin-left: 10px;">Yêu thích</button></a>
+      <a routerLink="/cart"><button type="button" class="btn btn-outline-info text-white" style="margin-left: 10px;">Giỏ
+          Hàng</button></a>
     </div>
   </div>
 </header>

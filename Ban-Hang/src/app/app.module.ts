@@ -27,9 +27,14 @@ import { ProductUpdateComponent } from './pages/product-update/product-update.co
 import { DetailCategoryComponent } from './pages/detail-category/detail-category.component';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 
+import { NgxPaginationModule} from "ngx-pagination";
+import { FavouriteComponent } from './pages/favourite/favourite.component'
+
+
 import { ListCategoryUseComponent } from './pages/list-category-use/list-category-use.component';
 
 import { NgxPaginationModule} from "ngx-pagination"
+
 
 
 
@@ -47,18 +52,15 @@ import { NgxPaginationModule} from "ngx-pagination"
     ListCategoriesComponent,
     CategoryEditComponent,
     ProductAddComponent,
-
     ProductListComponent,
     ProductDetailAdminComponent,
     ProductUpdateComponent,
-
-
     UserComponent,
     UserUpdateComponent,
-
     ProductListComponent,
     DetailCategoryComponent,
     AddToCartComponent,
+    FavouriteComponent,
     ListCategoryUseComponent
 
 

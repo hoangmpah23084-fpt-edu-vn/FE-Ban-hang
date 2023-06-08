@@ -20,7 +20,11 @@ import { ProductDetailAdminComponent } from './pages/product-detail-admin/produc
 import { ProductUpdateComponent } from './pages/product-update/product-update.component';
 import { DetailCategoryComponent } from './pages/detail-category/detail-category.component';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
+
+import { FavouriteComponent } from './pages/favourite/favourite.component';
+
 import { ListCategoryUseComponent } from './pages/list-category-use/list-category-use.component';
+
 
 
 
@@ -33,6 +37,7 @@ const routes: Routes = [
       { path: 'category', component: ListCategoriesComponent },
       { path: 'product/:id', component: PageDetailComponent },
       { path: 'cart', component: AddToCartComponent },
+      { path: 'favourite', component: FavouriteComponent },
       { path: 'categorys/:id', component: ListCategoryUseComponent },
 
     ]
@@ -46,15 +51,11 @@ const routes: Routes = [
       { path: 'category', component: ListCategoriesComponent },
       { path: 'category/add', component: CategoryAddComponent },
       { path: 'category/:id/detail', component: DetailCategoryComponent },
-
       { path: 'category/:id/edit', component: CategoryEditComponent },
-
       { path: 'product', component: ProductListComponent },
       { path: 'product/add', component: ProductAddComponent },
       { path: 'product/:id', component: ProductDetailAdminComponent },
       { path: 'product/:id/edit', component: ProductUpdateComponent },
-
-
       { path: 'product/add', component: ProductAddComponent },
       { path: 'user', component: UserComponent },
       { path: 'user/:id/edit', component: UserUpdateComponent },

@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/service/product.service';
 import Swal from 'sweetalert2';
 import { CategoryService } from '../../service/category.service';
 import { ICategory } from 'src/app/interface/category';
+import { FavouriteService } from 'src/app/service/favourite.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-home-page',
@@ -17,31 +18,38 @@ export class HomePageComponent {
   category!: ICategory[]
   allCategory!: ICategory[];
 
+  favourite: any = this.favouriteService.getFavourite()
 
+
+  index!: any
+
+  constructor(
+    private productService: ProductService,
+    private cartService: AddToCartService,
+    private cate: CategoryService,
+    private favouriteService: FavouriteService,
+  ) {
   constructor(private productService: ProductService,
     private cartService: AddToCartService, private cate: CategoryService,
     private router:Router) {
     this.productService.getProducts().subscribe((response: any) => {
       this.products = response.data
-      console.log(this.carts);
-
     }
     )
     this.cate.getCategoryAll().subscribe((response: any) => {
-      console.log(response.data)
       this.category = response.data
       this.allCategory = response.data;
     })
 
   }
 
+  //  cart
   addToCart(item: any) {
-
-    const index = this.carts.findIndex((i: any) => {
+    this.index = this.carts.findIndex((i: any) => {
       return i._id === item._id
     })
-    if (index >= 0) {
-      this.carts[parseInt(index)].quantity += 1
+    if (this.index >= 0) {
+      this.carts[parseInt(this.index)].quantity += 1
     } else {
       const cartItem: any = {
         _id: item._id,
@@ -54,6 +62,7 @@ export class HomePageComponent {
         }
       }
       this.carts.push(cartItem)
+
     }
 
     this.cartService.saveCart(this.carts)
@@ -65,15 +74,49 @@ export class HomePageComponent {
       timer: 1500
     })
   }
-
+  // end cart
   formatCurrency(value: number): string {
     const formatter = new Intl.NumberFormat('vi-VN', {
       style: 'currency',
       currency: 'VND',
       minimumFractionDigits: 0
     });
-
     return formatter.format(value);
   }
-  
+  // start favourite
+  addToFavourite(item: any) {
+    const index = this.favourite.findIndex((i: any) => {
+      return i._id === item._id
+    })
+    if (index >= 0) {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Delete favourite success',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      this.favourite.splice(index, 1)
+
+    } else {
+      const favouriteItem: any = {
+        _id: item._id,
+        name: item.name,
+        images: item.images,
+        price: item.price,
+        priceSale: item.priceSale,
+        describe: item.describe,
+      }
+      this.favourite.push(favouriteItem)
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Add to Favourite success',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+    }
+    this.favouriteService.saveFavourite(this.favourite)
+  }
 }

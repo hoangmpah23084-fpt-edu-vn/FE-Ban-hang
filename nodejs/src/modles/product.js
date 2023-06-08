@@ -23,6 +23,10 @@ const productSchema = new Schema({
         type: Boolean
     },
 
+    favourite: {
+        type: Boolean,
+        default: false
+    },
     categoryId: {
         type: mongoose.Types.ObjectId,
         ref: "Category",
