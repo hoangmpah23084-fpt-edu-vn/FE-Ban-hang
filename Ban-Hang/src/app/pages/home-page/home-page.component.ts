@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/service/product.service';
 import Swal from 'sweetalert2';
 import { CategoryService } from '../../service/category.service';
 import { ICategory } from 'src/app/interface/category';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -18,7 +19,8 @@ export class HomePageComponent {
 
 
   constructor(private productService: ProductService,
-    private cartService: AddToCartService, private cate: CategoryService) {
+    private cartService: AddToCartService, private cate: CategoryService,
+    private router:Router) {
     this.productService.getProducts().subscribe((response: any) => {
       this.products = response.data
       console.log(this.carts);
@@ -73,5 +75,5 @@ export class HomePageComponent {
 
     return formatter.format(value);
   }
-
+  
 }
