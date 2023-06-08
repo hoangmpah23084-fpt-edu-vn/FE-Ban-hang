@@ -26,14 +26,10 @@ import { ProductDetailAdminComponent } from './pages/product-detail-admin/produc
 import { ProductUpdateComponent } from './pages/product-update/product-update.component';
 import { DetailCategoryComponent } from './pages/detail-category/detail-category.component';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
-
-import { NgxPaginationModule} from "ngx-pagination";
+import { NgxPaginationModule } from "ngx-pagination";
 import { FavouriteComponent } from './pages/favourite/favourite.component'
-
-
 import { ListCategoryUseComponent } from './pages/list-category-use/list-category-use.component';
 
-import { NgxPaginationModule} from "ngx-pagination"
 
 
 
