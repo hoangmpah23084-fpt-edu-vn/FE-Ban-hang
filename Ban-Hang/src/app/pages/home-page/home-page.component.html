@@ -40,7 +40,7 @@
             <div class="col-md-3 mt-14">
                 <!-- Danh mục -->
                 <ul class="list-group p-2" *ngFor="let cate of category">
-                    <li class="list-group-item"><a href="">{{cate.name}}</a></li>
+                    <li class="list-group-item"><a routerLink="categorys/{{cate._id}} " >{{cate.name}}</a></li>
                 </ul>
             </div>
             <div class="flex flex-wrap mt-3 col-md-9">

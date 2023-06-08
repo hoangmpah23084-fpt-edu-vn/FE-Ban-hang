@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { CategoryService } from '../../service/category.service';
 import { ICategory } from 'src/app/interface/category';
 import { FavouriteService } from 'src/app/service/favourite.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -19,6 +20,7 @@ export class HomePageComponent {
 
   favourite: any = this.favouriteService.getFavourite()
 
+
   index!: any
 
   constructor(
@@ -27,6 +29,9 @@ export class HomePageComponent {
     private cate: CategoryService,
     private favouriteService: FavouriteService,
   ) {
+  constructor(private productService: ProductService,
+    private cartService: AddToCartService, private cate: CategoryService,
+    private router:Router) {
     this.productService.getProducts().subscribe((response: any) => {
       this.products = response.data
     }
@@ -78,7 +83,6 @@ export class HomePageComponent {
     });
     return formatter.format(value);
   }
-
   // start favourite
   addToFavourite(item: any) {
     const index = this.favourite.findIndex((i: any) => {
@@ -115,5 +119,4 @@ export class HomePageComponent {
     }
     this.favouriteService.saveFavourite(this.favourite)
   }
-
 }
