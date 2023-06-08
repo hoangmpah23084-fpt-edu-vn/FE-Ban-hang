@@ -17,10 +17,7 @@ export class HomePageComponent {
   carts: any = this.cartService.getToCart()
   category!: ICategory[]
   allCategory!: ICategory[];
-
   favourite: any = this.favouriteService.getFavourite()
-
-
   index!: any
 
   constructor(
@@ -29,9 +26,6 @@ export class HomePageComponent {
     private cate: CategoryService,
     private favouriteService: FavouriteService,
   ) {
-  constructor(private productService: ProductService,
-    private cartService: AddToCartService, private cate: CategoryService,
-    private router:Router) {
     this.productService.getProducts().subscribe((response: any) => {
       this.products = response.data
     }
@@ -42,6 +36,7 @@ export class HomePageComponent {
     })
 
   }
+
 
   //  cart
   addToCart(item: any) {
@@ -83,6 +78,8 @@ export class HomePageComponent {
     });
     return formatter.format(value);
   }
+
+
   // start favourite
   addToFavourite(item: any) {
     const index = this.favourite.findIndex((i: any) => {
@@ -120,3 +117,5 @@ export class HomePageComponent {
     this.favouriteService.saveFavourite(this.favourite)
   }
 }
+
+
