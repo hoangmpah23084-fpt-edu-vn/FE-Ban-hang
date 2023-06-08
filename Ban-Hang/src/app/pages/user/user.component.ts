@@ -16,6 +16,11 @@ export class UserComponent {
   searchValue: any
   isShown: boolean = true
   allUsers!: User[]
+   //  listmist + page
+   page : number = 1
+   tabSize : number = 2
+   tabSizes : any[]= [2, 4 ,6 ,8,1000]
+   count:number=0
 
   constructor(
     private UserService: UserService,
@@ -27,7 +32,29 @@ export class UserComponent {
       this.allUsers = response.data
     })
   }
+   //  limit_page
+onHandleSubmit(){
+  this.UserService.getUsers().subscribe((response: any) => {
+    console.log(response.data)
+    this.user = response.data
+    this.allUsers = response.data
+  }
+  )
+}
+onHandleLimit(event:any){
+  this.tabSize = event.target.value;
+  console.log(event.target.value)
+  this.page=1
+  this.onHandleSubmit()
+  // console.log(this.onHandleSubmit());
+  
+}
 
+onHandlesPage(event:any){
+  this.page= event;
+  this.onHandleSubmit()
+
+}
   Remove(_id: any) {
     Swal.fire({
       title: 'Delete?',
@@ -57,7 +84,7 @@ export class UserComponent {
   }
 
   onSearch() {
-    console.log(`product:`, this.searchValue)
+    // console.log(`user:`, this.searchValue)
     this.isShown = true;
     if (this.searchValue === "") {
       this.user = this.allUsers;
