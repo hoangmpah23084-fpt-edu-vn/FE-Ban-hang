@@ -5,12 +5,12 @@
                 CATEGORY</a>
         </td>
         <td class="px-6 py-4">
-            <select  (change)="onHandleLimit($event)">
-              <option *ngFor="let size of tabSizes" [ngValue]="size">{{size}}</option>
+            <select (change)="onHandleLimit($event)">
+                <option *ngFor="let size of tabSizes" [ngValue]="size">{{size}}</option>
             </select>
-          </td>
+        </td>
         <input [(ngModel)]="searchValue" name="searchValue" type="search" class="form-control form-control-dark"
-                placeholder="Search..." aria-label="Search" (input)="onSearch()" (keyup)="onSearch()">
+            placeholder="Search..." aria-label="Search" (input)="onSearch()" (keyup)="onSearch()">
     </div>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -42,5 +42,6 @@
             </tr>
         </tbody>
     </table>
-    <pagination-controls previousLabel="Truoc" nextLabel="tiep" (pageChange)="onHandlesPage($event)"></pagination-controls>
+
 </div>
+<pagination-controls previousLabel="Truoc" nextLabel="tiep" (pageChange)="onHandlesPage($event)"></pagination-controls>
