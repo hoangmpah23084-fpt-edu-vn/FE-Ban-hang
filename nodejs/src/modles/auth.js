@@ -12,7 +12,9 @@ const authSchames = new mongoose.Schema({
     role: {
         type: String,
         default: "member",
-    }
+    },
+
+
 })
 
 export default mongoose.model('Auth', authSchames)

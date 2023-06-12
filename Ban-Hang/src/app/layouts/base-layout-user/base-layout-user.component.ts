@@ -21,6 +21,7 @@ export class BaseLayoutUserComponent {
     private route: ActivatedRoute) { }
   userName = localStorage.getItem('userName');
   role = localStorage.getItem('role');
+  id = localStorage.getItem('id');
   showAdmin = true;
   logout() {
 
@@ -39,6 +40,8 @@ export class BaseLayoutUserComponent {
         localStorage.removeItem('token');
         localStorage.removeItem('userName');
         localStorage.removeItem('role');
+        localStorage.removeItem('id');
+        localStorage.removeItem('email');
 
         this.userName = null;
         this.role = null;

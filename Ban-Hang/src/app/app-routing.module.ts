@@ -37,7 +37,7 @@ const routes: Routes = [
       { path: 'category', component: ListCategoriesComponent },
       { path: 'product/:id', component: PageDetailComponent },
       { path: 'cart', component: AddToCartComponent },
-      { path: 'favourite', component: FavouriteComponent },
+      { path: 'favourite/:id', component: FavouriteComponent },
       { path: 'categorys/:id', component: ListCategoryUseComponent },
 
     ]
