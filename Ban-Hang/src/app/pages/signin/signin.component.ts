@@ -39,8 +39,7 @@ export class SigninComponent {
           localStorage.setItem('userName', data.user.name);
           localStorage.setItem('role', data.user.role);
           localStorage.setItem('email', data.user.email);
-
-
+          localStorage.setItem('id', data.user._id);
           localStorage.setItem('token', data.token);
           let token = localStorage.getItem('token');
           console.log(token);

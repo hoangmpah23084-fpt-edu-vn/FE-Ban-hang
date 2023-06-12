@@ -17,8 +17,10 @@ export class HomePageComponent {
   carts: any = this.cartService.getToCart()
   category!: ICategory[]
   allCategory!: ICategory[];
-  favourite: any = this.favouriteService.getFavourite()
   index!: any
+  wishlist: any = {};
+  user_id = localStorage.getItem('id');
+
 
   page: number = 1
   tabSize: number = 12
@@ -107,42 +109,37 @@ export class HomePageComponent {
   }
 
 
-  // start favourite
-  addToFavourite(item: any) {
-    const index = this.favourite.findIndex((i: any) => {
-      return i._id === item._id
-    })
-    if (index >= 0) {
+  addToWishlist(product_id: string): void {
+    if (this.user_id === null) {
       Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Delete favourite success',
+        title: 'Bạn cần đăng nhập',
         showConfirmButton: false,
         timer: 1500
       })
-      this.favourite.splice(index, 1)
-
     } else {
-      const favouriteItem: any = {
-        _id: item._id,
-        name: item.name,
-        images: item.images,
-        price: item.price,
-        priceSale: item.priceSale,
-        describe: item.describe,
-      }
-      this.favourite.push(favouriteItem)
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Add to Favourite success',
-        showConfirmButton: false,
-        timer: 1500
-      })
-
+      this.favouriteService.addToWishlist(this.user_id, product_id).subscribe(
+        wishlist => {
+          this.wishlist = wishlist
+          console.log(wishlist);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'thêm yêu thích thành công',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
-    this.favouriteService.saveFavourite(this.favourite)
+
   }
+
+
 }
 
 
