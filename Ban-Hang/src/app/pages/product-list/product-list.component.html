@@ -26,9 +26,6 @@
         Product Name
       </th>
       <th scope="col" class="px-6 py-3">
-        categoryId
-      </th>
-      <th scope="col" class="px-6 py-3">
         Price
       </th>
       <th scope="col" class="px-6 py-3">
@@ -57,11 +54,6 @@
 
       </td>
       <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-        <a routerLink="{{item._id}}">{{item.categoryId}}</a>
-      </td>
-
-
-      <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
         {{ formatCurrency(item.price) }}
       </td>
       <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
@@ -83,7 +75,8 @@
     </tr>
 
   </tbody>
-  <pagination-controls previousLabel="Truoc" nextLabel="tiep"
-    (pageChange)="onHandlesPage($event)"></pagination-controls>
+
 
 </table>
+
+<pagination-controls previousLabel="Truoc" nextLabel="tiep" (pageChange)="onHandlesPage($event)"></pagination-controls>

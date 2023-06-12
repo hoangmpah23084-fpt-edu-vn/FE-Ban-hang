@@ -37,13 +37,14 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3 mt-14 w-[280px] ">
+            <div class="col-md-3 mt-14 w-[80px] ml-[-70px] mr-[70px]">
                 <!-- Danh mục -->
                 <h3 class=" text-xl font-semibold text-stone-500">Category:</h3>
                 <ul class="list-group" *ngFor="let cate of category">
-                    <li class="list-group-item w-[220px]"><a routerLink="categorys/{{cate._id}} ">{{cate.name}}</a></li>
+                    <li class="list-group-item w-[150px]"><a routerLink="categorys/{{cate._id}} ">{{cate.name}}</a></li>
                 </ul>
             </div>
+
             <div class="col-md-9 mt-6 mt-[80px] ml-[10px]">
                 <div class="row mx-0">
                     <div class="col-md-3 mb-4 " *ngFor="let item of products | paginate:{itemsPerPage: tabSize,
@@ -60,6 +61,7 @@
                                 <div class="caption ml-4 mt-2 text-orange-700 font-semibold text-xl">
                                     <h3>{{item.name}}</h3>
                                 </div>
+
                             </a>
                             <div class="card-body shadow-2xl rounded-lg " style="position: relative; z-index: 1;">
                                 <h5 class="card-title text-danger" *ngIf="item.priceSale !== 0">
@@ -68,11 +70,12 @@
                                         formatCurrency(item.price) }}</span>
                                     {{ formatCurrency(item.priceSale) }}
                                 </h5>
+
                                 <h5 class="card-title text-danger" *ngIf="item.priceSale === 0">{{
                                     formatCurrency(item.price) }}</h5>
                                 <div class="card-button"
                                     style="text-align: center; display: flex; justify-content: space-around;">
-                                    <button class="btn btn-outline-secondary">
+                                    <button class="btn btn-outline-secondary " (click)="addToFavourite(item)">
                                         <i class="fa fa-heart"></i>
                                     </button>
                                     <a href="#" class="btn btn-outline-danger">Mua ngay</a>
