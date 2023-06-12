@@ -20,6 +20,9 @@ export class HomePageComponent {
   favourite: any = this.favouriteService.getFavourite()
   index!: any
 
+  page: number = 1
+  tabSize: number = 12
+  count: number = 0
   constructor(
     private productService: ProductService,
     private cartService: AddToCartService,
@@ -27,17 +30,41 @@ export class HomePageComponent {
     private favouriteService: FavouriteService,
   ) {
     this.productService.getProducts().subscribe((response: any) => {
-      this.products = response.data
+      this.products = response.data.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
     }
     )
     this.cate.getCategoryAll().subscribe((response: any) => {
       this.category = response.data
       this.allCategory = response.data;
+
     })
 
   }
 
+  //  limit_page
+  onHandleSubmit() {
+    this.cate.getCategoryAll().subscribe((response: any) => {
+      console.log(response.data)
+      this.category = response.data
+      this.allCategory = response.data
+    }
+    )
+  }
+  onHandleLimit(event: any) {
+    this.tabSize = event.target.value;
+    console.log(event.target.value)
+    this.page = 1
+    this.onHandleSubmit()
+    console.log(this.onHandleSubmit());
 
+  }
+
+  onHandlesPage(event: any) {
+    this.page = event;
+    this.onHandleSubmit()
+
+  }
   //  cart
   addToCart(item: any) {
     this.index = this.carts.findIndex((i: any) => {
